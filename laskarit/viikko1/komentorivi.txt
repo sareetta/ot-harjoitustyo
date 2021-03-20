@@ -1,0 +1,8 @@
+reettakristiina@LAPTOP-27TH0ALL:~$ tree ot-harjoitustyo
+.
+├── ot-harjoitustyo
+   ├── README.md
+   └── laskarit
+       └── viikko1
+
+3 directories, 1 files

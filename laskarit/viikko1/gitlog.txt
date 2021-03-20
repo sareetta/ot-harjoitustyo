@@ -1,0 +1,141 @@
+reettakristiina@LAPTOP-27TH0ALL:~/ot_viikko1$ git log --stat | cat
+commit 8f79d65bc642f8cab04b6d9fb38399786df5ca66
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 14:03:34 2021 +0200
+
+    valmis
+
+ tiedostoja/{file2 => file22} | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit eb35e1e6040c9a263953a95b38ab046222a21c5f
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 14:00:36 2021 +0200
+
+    harjoittelua
+
+ tiedostoja/file1 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit a6779cb2af4369eb7a1c33f7750dab5e677390f3
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 13:55:08 2021 +0200
+
+    uusi hakemisto
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 822029905407db235f7ecda7d01608ac0d3b4e53
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 13:42:33 2021 +0200
+
+    poistetaan toinen.txt
+
+ toinen.txt | 8 --------
+ 1 file changed, 8 deletions(-)
+
+commit b7d9c51d3827b785d2eb72df40b4fe5a575c99ba
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 13:41:48 2021 +0200
+
+    poistetaan toinen.txt
+
+ toinen.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+commit 79c1e8a88916a9d2d136e969029e69a51214591a
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 13:40:19 2021 +0200
+
+    muokkauksia eka.txt ja kolmas.txt
+
+ eka.txt    | 17 ++++++++++++-----
+ kolmas.txt | 28 +++++++++++++++++++++++++++-
+ 2 files changed, 39 insertions(+), 6 deletions(-)
+
+commit cf38ce8e65603f0cc0f0e120d1ca1f542415b9d7
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 13:34:07 2021 +0200
+
+    tiedosto tiedosto.txt > eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit bd869bcd071bc0e01c71dc4b6490f3023186bd14
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 13:32:14 2021 +0200
+
+    poistettiin toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 1256586a0a6480e4ff3c2be8734cd365c4966bdd
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 13:27:19 2021 +0200
+
+    poistettiin ja lisättiin tekstiä
+
+ tiedosto.txt | 101 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 99 insertions(+), 2 deletions(-)
+
+commit bf5183118d72cacdab8f5c832cf38c8a019294ee
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Fri Mar 19 13:17:25 2021 +0200
+
+    lisättiin tekstiä
+
+ tiedosto.txt | 98 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 97 insertions(+), 1 deletion(-)
+
+commit 37374a7851ee17cf22e6eebc16f11190015cef27
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Thu Mar 18 14:44:33 2021 +0200
+
+    valmis
+
+ stuff | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 27527a7b16402ac9157d170b08069799febb51e7
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Thu Mar 18 13:53:13 2021 +0200
+
+    muokatut
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit eb394363ca8b8b922eb92a51b5997039566d7fea
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Thu Mar 18 13:50:38 2021 +0200
+
+    uusi lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit f310ec320a146c59306b130c85d3510bc280cf76
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Thu Mar 18 13:44:00 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 5ea7141bd97e09980924eaf92777bc3a87ec5f67
+Author: Reetta <reetta.sainio@helsinki.fi>
+Date:   Thu Mar 18 13:26:33 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+reettakristiina@LAPTOP-27TH0ALL:~/ot_viikko1$
