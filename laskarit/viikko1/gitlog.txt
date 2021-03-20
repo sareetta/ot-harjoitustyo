@@ -33,6 +33,8 @@ Author: Reetta <reetta.sainio@helsinki.fi>
 Date:   Fri Mar 19 13:42:33 2021 +0200
 
     poistetaan toinen.txt
+    
+    Testi
 
  toinen.txt | 8 --------
  1 file changed, 8 deletions(-)
