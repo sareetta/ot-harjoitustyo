@@ -1,7 +1,8 @@
-## Otsikko
+# Ohjelmistotekniikka, harjoitustyö
 
-Testataan **lihavointia** ja *kursivointia*.
-Kokeillaan vielä molempia **samaan _aikaan_ näin**.
+## Tehtävät
+
+### Viikko 1
 
 [gitlog.txt](https://github.com/sareetta/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
