@@ -7,7 +7,7 @@ Kyseinen ruudukko koostuu pienemmistä 3x3 -kokoisista ruudukoista, joissa jokai
 Ruudukossa on pelin alussa osa ruuduista täytettyinä ja pelaaja voi vaikuttaa niiden määrään valitsemalla pelin vaikeustason.
 
 ## Käyttäjät
-Pelissä jokainen käyttäjä on rooliltaan _normaali käyttäjä_.
+Pelissä jokainen käyttäjä on rooliltaan _normaali_ _käyttäjä_.
 
 ## Perusversion toiminnallisuudet
 * Sovelluksen käynnistyessä
