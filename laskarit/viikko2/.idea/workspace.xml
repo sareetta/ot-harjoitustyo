@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0a9b66a-7ae2-4b25-a537-ef186c506f33" name="Default Changelist" comment="" />
+    <list default="true" id="f0a9b66a-7ae2-4b25-a537-ef186c506f33" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maksukortti/Maksukortti.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maksukortti/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maksukortti/src/main/java/Maksukortti.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maksukortti/src/test/MaksukorttiTest.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +27,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1qKpeTxyJ2uPIb4Rcy1zHOAmsQ8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -33,10 +47,12 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -96,8 +112,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.MaksukorttiTest" />
       <item itemvalue="JUnit.All in Maksukortti" />
+      <item itemvalue="JUnit.MaksukorttiTest" />
       <item itemvalue="JUnit.MaksukorttiTest.konstruktioAsettaaSaldonOikein" />
       <item itemvalue="JUnit.MaksukorttiTest.konstruktoriAsettaaSaldonOikein" />
     </list>
@@ -129,5 +145,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
