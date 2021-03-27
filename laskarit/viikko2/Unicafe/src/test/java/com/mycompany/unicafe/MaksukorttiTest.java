@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MaksukorttiTest {
-
     Maksukortti kortti;
 
     @Before
@@ -15,6 +14,11 @@ public class MaksukorttiTest {
 
     @Test
     public void luotuKorttiOlemassa() {
-        assertTrue(kortti!=null);      
+        assertTrue(kortti!=null);
+    }
+
+    @Test
+    public void konstruktoriAsettaaSaldonOikein() {
+        assertTrue(10.0==kortti.saldo());
     }
 }
