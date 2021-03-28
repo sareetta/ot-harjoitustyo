@@ -5,12 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MaksukorttiTest {
-
     Maksukortti kortti;
 
     @Before
     public void setUp() {
-        kortti = new Maksukortti(10);
+        kortti = new Maksukortti(1000);
     }
 
     @Test
@@ -20,36 +19,43 @@ public class MaksukorttiTest {
 
     @Test
     public void konstruktioAsettaaSaldonOikein() {
-        assertTrue(10==kortti.saldo());
+        assertEquals("saldo: 10.00", kortti.toString());
+    }
+
+    @Test
+    public void saldonkutsuminenToimii() {
+        assertEquals(1000,kortti.saldo());
     }
 
     @Test
     public void rahanLatausToimii() {
-        kortti.lataaRahaa(10);
-        assertTrue(20==kortti.saldo());
+        kortti.lataaRahaa(205);
+        assertEquals("saldo: 12.05",kortti.toString());
     }
 
     @Test
     public void rahanOttaminenToimii() {
-        kortti.otaRahaa(2);
-        assertTrue(8==kortti.saldo());
+        kortti.otaRahaa(200);
+        assertEquals("saldo: 8.00",kortti.toString());
     }
 
     @Test
     public void rahanOttaminenEiVieSaldoaNegatiiviseksi() {
-        kortti.otaRahaa(20);
-        assertTrue(10==kortti.saldo());
+        kortti.otaRahaa(2000);
+        assertEquals("saldo: 10.00", kortti.toString());
     }
 
     @Test
     public void rahanOttaminenPalauttaaTrueJosTarpeeksi() {
-        assertTrue(kortti.otaRahaa(2));
+        assertTrue(kortti.otaRahaa(900));
     }
 
     @Test
     public void rahanOttaminenPalauttaaFalseJosEiTarpeeksi() {
-        assertFalse(kortti.otaRahaa(12));
+        assertFalse(kortti.otaRahaa(1200));
     }
+
+
 
 
 }
