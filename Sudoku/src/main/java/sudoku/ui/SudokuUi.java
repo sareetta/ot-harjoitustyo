@@ -8,6 +8,6 @@ public class SudokuUi extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        
+
     }
 }
