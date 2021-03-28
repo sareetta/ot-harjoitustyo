@@ -55,7 +55,11 @@ public class MaksukorttiTest {
         assertFalse(kortti.otaRahaa(1200));
     }
 
-
+    @Test
+    public void toStringPalauttaaOikeinKunYliKymmenenSenttiä() {
+        kortti.lataaRahaa(220);
+        assertEquals("saldo: 12.20",kortti.toString());
+    }
 
 
 }
