@@ -1,3 +1,5 @@
+package com.mycompany.unicafe;
+
 import com.mycompany.unicafe.Kassapaate;
 import com.mycompany.unicafe.Maksukortti;
 import org.junit.Before;
