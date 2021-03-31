@@ -1,4 +1,4 @@
-package org.example;
+package sudoku.ui;
 
 public class SystemInfo {
 
