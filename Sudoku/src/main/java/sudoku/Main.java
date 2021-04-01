@@ -5,7 +5,7 @@
  */
 package sudoku;
 
-import sudoku.App;
+import sudoku.ui.SudokuUi;
 
 /**
  *
@@ -13,7 +13,7 @@ import sudoku.App;
  */
 public class Main {
     public static void main(String[] args) {
-        App.main(args);
+        SudokuUi.main(args);
     }
     
 }
