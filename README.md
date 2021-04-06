@@ -10,8 +10,11 @@
 
 ## Viikko3
 [Monopolin alustava luokkakaavio](https://github.com/sareetta/ot-harjoitustyo/blob/master/laskarit/viikko3/MonopolinAlustavaLuokkakaavio.png)
+
 [Monopolin luokkakaavio](https://github.com/sareetta/ot-harjoitustyo/blob/master/laskarit/viikko3/MonopolinLuokkakaavio.png)
+
 [Koneen sekvenssikaavio](https://github.com/sareetta/ot-harjoitustyo/blob/master/laskarit/viikko3/KoneenSekvenssikaavio.png)
+
 [HSL:n sekvenssikaavio](https://github.com/sareetta/ot-harjoitustyo/blob/master/laskarit/viikko3/HSLSekvenssikaavio.png)
 
 ## Dokumentaatio
