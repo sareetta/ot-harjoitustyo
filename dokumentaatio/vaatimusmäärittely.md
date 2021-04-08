@@ -11,8 +11,8 @@ Pelissä jokainen käyttäjä on rooliltaan _normaali_ _käyttäjä_.
 
 ## Perusversion toiminnallisuudet
 * Sovelluksen käynnistyessä
- * Käyttäjä voi valita haluaako aloittaa pelaamisen vai katsoa ennätysaikoja
- * Käyttäjä voi valita kahdesta vaikeustasosta _helppo_ ja _keskitaso_ mieluisemman
+  * Käyttäjä voi valita haluaako aloittaa pelaamisen vai katsoa ennätysaikoja
+  * Käyttäjä voi valita kahdesta vaikeustasosta _helppo_ ja _keskitaso_ mieluisemman
 * Kun käyttäjä aloittaa pelin, hänelle generoidaan peliruudukko. Ruudukkoon syötetään numeroita näppäimistöltä klikkaamalla hiirellä haluttua sijoituskohtaa
 * Ruudulla näkyy kello, josta pelaaja voi seurata kauanko hänellä menee aikaa pelin ratkaisemiseen
 * Käyttäjä pystyy pelin aikana tarkastamaan ratkaisunsa tarkistusnapista
