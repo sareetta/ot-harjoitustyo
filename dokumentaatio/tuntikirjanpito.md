@@ -5,5 +5,5 @@ Päivä | Aika | Mitä tein?
 1.4  | 8 | Wsl aiheutti ongelmia ja selvitin niitä
 1.4  | 2 | Päädyin käyttämään etätyöpöytää ja siirryin NetBeansin käyttöön
 6.4 | 3 | Graafisen käyttöliittymän kokeiluja
-7.4 | 8 | Tutustuin sudokun toteutustapoihin/logiikkaan ja mietin projektin toiminnallisuuksia sekä rakennetta
-  
+7.4 | 8 | Tutustuin sudokun toteutustapoihin/logiikkaan ja mietin tarvittavia metodeja
+8.4 | 8 | Toteutin uuden Sudokun generoinnin
