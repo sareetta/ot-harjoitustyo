@@ -5,10 +5,7 @@
  */
 package sudoku.domain;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,29 +14,27 @@ import static org.junit.Assert.*;
  * @author sareetta
  */
 public class SudokuGameTest {
-    
-    public SudokuGameTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    SudokuGame sudoku;
     
     @Before
     public void setUp() {
+        sudoku = new SudokuGame();
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void constructorCreatesNewSudoku() {
+        assertTrue(sudoku != null);
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    @Test
+    public void newSudokuSetsBoardWithCorrectHight() {
+        assertTrue(9 == sudoku.getSudoku().length);
+    }
+    
+    @Test
+    public void newSudokuSetsBoardWithCorrectWidht() {
+        assertTrue(9 == sudoku.getSudoku()[0].length);
+    }
+    
+   
 }
