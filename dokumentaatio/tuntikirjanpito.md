@@ -8,3 +8,5 @@ Päivä | Aika | Mitä tein?
 7.4 | 8 | Tutustuin sudokun toteutustapoihin/logiikkaan ja mietin tarvittavia metodeja
 8.4 | 8 | Toteutin uuden Sudokun ratkaisun generoinnin
 10.4 | 4 | Tein käyttöliittymään aloitusnäkymän ja lisäsin SudkokuGame luokkaan koodin
+15.4 | 4 | Tein uusia testejä domain luokalle
+Yht. | 43 |
