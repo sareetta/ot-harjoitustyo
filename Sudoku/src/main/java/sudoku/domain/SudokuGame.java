@@ -87,8 +87,8 @@ public class SudokuGame {
         else if(column < 6) Y = 3;
         else Y = 6;
        
-        for (int i = Y; i < Y + 3; i++) {
-            for (int j = X; j < X + 3; j++) {
+        for (int i = X; i < X + 3; i++) {
+            for (int j = Y; j < Y + 3; j++) {
                 if (sudoku[i][j] == value)
                     return false;
             }
