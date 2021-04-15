@@ -60,7 +60,7 @@ public class SudokuGame {
         return -1;
     }
 
-    private boolean isPossibleColumn(int row, int value) {
+    public boolean isPossibleColumn(int row, int value) {
         for(int column = 0; column < 9; column++) {
             if(sudoku[row][column] == value) return false;
         }
@@ -68,7 +68,7 @@ public class SudokuGame {
         return true;
     }
     
-    private boolean isPossibleRow(int column, int value) {
+    public boolean isPossibleRow(int column, int value) {
         for(int row = 0; row < 9; row++) {
             if(sudoku[row][column] == value) return false;
         }
@@ -76,23 +76,23 @@ public class SudokuGame {
         return true;
     }
 
-    private boolean isPossibleSubgrid(int column, int row, int value) {
-        int x,y;
+    public boolean isPossibleSubgrid(int column, int row, int value) {
+       int X, Y;
         
-        if(column < 3) x = 0;
-        else if(column < 6) x = 3;
-        else x = 6;
+        if(row < 3) X = 0;
+        else if(row < 6) X = 3;
+        else X = 6;
         
-        if(row < 3) y = 0;
-        else if(row < 6) y = 3;
-        else y = 6;
-        
-        for(int i = y; i < y + 3; i++) {
-            for(int j = x; j < x + 3; j++) {
-                if(sudoku[i][j] == value) return false;
+        if(column < 3) Y = 0;
+        else if(column < 6) Y = 3;
+        else Y = 6;
+       
+        for (int i = Y; i < Y + 3; i++) {
+            for (int j = X; j < X + 3; j++) {
+                if (sudoku[i][j] == value)
+                    return false;
             }
         }
-        
         return true;
     }
     
