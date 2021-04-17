@@ -13,22 +13,24 @@ import java.util.*;
  */
 public class SudokuGame {
     private int[][] sudoku;
+    private int difficulty;
     
     public SudokuGame() {
+        difficulty = 25;
         newSudoku();
     }
     
     public void newSudoku() {
         sudoku = new int[9][9];
         generateSudoku(0);
-        // maybe copy the solution to a new table
+        addDifficultyLevel(this.difficulty);
     }
     
     public int[][] generateSudoku(int index) {
         if(index > 80) return sudoku;
         
-        int column = index % 9;
         int row = index / 9;
+        int column = index % 9;
         
         List<Integer> values = new ArrayList<>();
         for(int i = 1; i <= 9; i++) values.add(i);
@@ -96,6 +98,25 @@ public class SudokuGame {
         return true;
     }
     
+    public void addDifficultyLevel(int difficulty) {
+        int amountToReplace = difficulty;
+        Random random = new Random();
+
+        while (amountToReplace > 0) {
+            int number = random.nextInt(81);
+            
+            int row = number / 9;
+            int column = number % 9;
+
+            if (sudoku[row][column] == 0) {
+                continue;
+            }
+
+            sudoku[row][column] = 0;
+            amountToReplace--;
+        }
+    }
+    
     public void setValue(int column, int row, int value) {
         if (value < 1 || value > 9) {
             sudoku[row][column] = 1;
@@ -110,6 +131,14 @@ public class SudokuGame {
     
     public int[][] getSudoku() {
         return this.sudoku;
+    }
+    
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+    
+    public int getDifficulty() {
+        return this.difficulty;
     }
     
     public void print() {
