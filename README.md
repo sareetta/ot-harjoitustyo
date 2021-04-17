@@ -15,12 +15,20 @@ Ohjelman voi suorittaa kansiosta Sudoku komennolla:
 mvn compile exec:java -Dexec.mainClass=sudoku.Main
 ```
 ### Testaus
-Testit suoritetaan komennolla:
+Testit voi suorittaa komennolla:
 ```javascript
 mvn test
 ```
-Testikattavuus saadaan komennolla:
+Testikattavuuden saa komennolla:
 ```javascript
 mvn jacoco:report
 ```
+Komento luo target-kansioon projektista testien rivi- ja haaraumakattavuusraportin (target/site/jacoco/index.html).
+
+### Checkstyle
+Checkstyle-raportin saa komennolla:
+```javascript
+mvn jxr:jxr checkstyle:checkstyle
+```
+Komento luo target-kansioon projektista tyylivirheraportin (target/site/checkstyle.html).
 
