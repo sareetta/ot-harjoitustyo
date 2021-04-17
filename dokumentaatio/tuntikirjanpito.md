@@ -10,5 +10,5 @@ Päivä | Aika | Mitä tein?
 10.4 | 4 | Tein käyttöliittymään aloitusnäkymän ja lisäsin SudkokuGame luokkaan koodin
 15.4 | 4 | Tein uusia testejä SudokuGame luokalle 
 16.4 | 3 | Käyttöliittymän laajennusta
-17.4 | 5 | Käyttöliittymän ja sovelluslogiikan laajennusta
-Yht. | 48 |
+17.4 | 6 | Käyttöliittymän ja sovelluslogiikan laajennusta
+Yht. | 49 |
