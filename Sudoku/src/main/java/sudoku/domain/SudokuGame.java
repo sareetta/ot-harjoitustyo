@@ -27,29 +27,25 @@ public class SudokuGame {
     }
     
     public int[][] generateSudoku(int index) {
-        if (index > 80) {
-            return sudoku;
+        if (index > 80) { return sudoku;
         }
         
         int row = index / 9;
         int column = index % 9;
         
         List<Integer> values = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
-            values.add(i);
+        for (int i = 1; i <= 9; i++) { values.add(i);
         }
         Collections.shuffle(values);
         
         while (values.size() > 0) {
             int value = getNextPossibleValue(column, row, values);
-            if(value == -1) {
-                return null;
+            if (value == -1) { return null;
             }
             
             sudoku[row][column] = value;
-            int[][] temp = generateSudoku(index +1);
-            if(temp != null) {
-                return temp;
+            int[][] temp = generateSudoku(index + 1);
+            if (temp != null) { return temp;
             }
             sudoku[row][column] = 0;
         }
@@ -72,7 +68,7 @@ public class SudokuGame {
 
     public boolean isPossibleColumn(int row, int value) {
         for (int column = 0; column < 9; column++) {
-            if(sudoku[row][column] == value) {
+            if (sudoku[row][column] == value) {
                 return false;
             }
         }
@@ -82,7 +78,7 @@ public class SudokuGame {
     
     public boolean isPossibleRow(int column, int value) {
         for (int row = 0; row < 9; row++) {
-            if(sudoku[row][column] == value) {
+            if (sudoku[row][column] == value) {
                 return false;
             }
         }
@@ -91,28 +87,23 @@ public class SudokuGame {
     }
 
     public boolean isPossibleSubgrid(int column, int row, int value) {
-       int x, y;
+        int x, y;
         
-        if (row < 3) {
-            x = 0;
-        } else if (row < 6) {
-            x = 3;
-        } else {
-            x = 6;
+        if (row < 3) { x = 0;
+        } else if (row < 6) { x = 3;
+        } else { x = 6;
         }
         
-        if (column < 3) {
-            y = 0;
-        } else if (column < 6) {
-            y = 3;
-        } else {
-            y = 6;
+        if (column < 3) { y = 0;
+        } else if (column < 6) { y = 3;
+        } else { y = 6;
         }
        
         for (int i = x; i < x + 3; i++) {
             for (int j = y; j < y + 3; j++) {
-                if (sudoku[i][j] == value)
+                if (sudoku[i][j] == value) {
                     return false;
+                }
             }
         }
         return true;
@@ -166,7 +157,7 @@ public class SudokuGame {
         for (int column = 0; column < 9; column++) {
             for (int row = 0; row < 9; row++) {
                 System.out.print(" " + sudoku[row][column]);
-            System.out.println();
+                System.out.println();
             }
         }
     }
