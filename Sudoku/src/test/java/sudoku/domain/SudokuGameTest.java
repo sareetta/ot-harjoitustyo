@@ -67,9 +67,7 @@ public class SudokuGameTest {
     
     @Test
     public void isPossibleSubgridReturnTrueIfNumberCanBeInserted() {
-        int number = sudoku.getValue(1, 1);
-        sudoku.setValue(1,1,1);
-        assertTrue(sudoku.isPossibleSubgrid(1,1,number));
+        assertTrue(sudoku.isPossibleSubgrid(0, 0, 8));
     }
     
     @Test 

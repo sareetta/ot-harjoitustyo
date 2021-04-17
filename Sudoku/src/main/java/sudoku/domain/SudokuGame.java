@@ -18,7 +18,7 @@ public class SudokuGame {
     
     public SudokuGame() {
         difficulty = 25;
-        newSudoku();
+        sudoku = new int[9][9];
         values = new ArrayList<>();
         for (int i = 1; i <= 9; i++) { 
             values.add(i);
@@ -26,7 +26,6 @@ public class SudokuGame {
     }
     
     public void newSudoku() {
-        sudoku = new int[9][9];
         generateSudoku(0);
         addDifficultyLevel(this.difficulty);
         Collections.shuffle(values);
