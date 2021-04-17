@@ -83,8 +83,8 @@ public class SudokuGame {
     }
 
     public boolean isPossibleSubgrid(int column, int row, int value) {
-        int x = x < 3 ? 0 : x < 6 ? 3 : 6;
-        int y = y < 3 ? 0 : y < 6 ? 3 : 6;
+        int x = row < 3 ? 0 : row < 6 ? 3 : 6;
+        int y = column < 3 ? 0 : column < 6 ? 3 : 6;
        
         for (int i = x; i < x + 3; i++) {
             for (int j = y; j < y + 3; j++) {
