@@ -12,5 +12,5 @@ Päivä | Aika | Mitä tein?
 16.4 | 3 | Käyttöliittymän laajennusta
 17.4 | 6 | Käyttöliittymän ja sovelluslogiikan laajennusta
 17.4 | 1 | Checkstyle virheiden korjaus
-18.4 | 1 | Alustava pakkaus-/luokkakaavio
+19.4 | 1 | Alustava pakkaus-/luokkakaavio
 Yht. | 51 |
