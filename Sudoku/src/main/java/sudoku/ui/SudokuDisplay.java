@@ -18,11 +18,10 @@ import sudoku.domain.SudokuGame;
  * @author sareetta
  */
 public class SudokuDisplay {
-   private TextArea[][] board = new TextArea[9][9];
-    private SudokuGame sudoku;
+   private TextArea[][] board;
     
     public SudokuDisplay() {
-        sudoku = new SudokuGame();
+        board = new TextArea[9][9];
     }
     
     public void show(SudokuGame sudoku, GridPane sudokuBoard) {
