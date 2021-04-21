@@ -14,21 +14,15 @@ import java.util.*;
 public class SudokuGame {
     private int[][] sudoku;
     private int difficulty;
-    private List<Integer> values;
     
     public SudokuGame() {
-        difficulty = 25;
         sudoku = new int[9][9];
-        values = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) { 
-            values.add(i);
-        }
+        difficulty = 36;
     }
     
     public void newSudoku() {
         generateSudoku(0);
         addDifficultyLevel(this.difficulty);
-        Collections.shuffle(values);
     }
    
     public int[][] generateSudoku(int index) {
@@ -38,6 +32,10 @@ public class SudokuGame {
         int row = index / 9;
         int column = index % 9;
         
+        List<Integer> values = new ArrayList<Integer>();
+        for (int i = 1; i <= 9; i++) values.add(i);
+        Collections.shuffle(values);
+
         while (values.size() > 0) {
             int value = getNextPossibleValue(column, row, values);
             if (value == -1) { 
