@@ -9,6 +9,6 @@ package sudoku.domain;
  *
  * @author sareetta
  */
-public class SudokuScore {
+public class SudokuStatistics {
     
 }

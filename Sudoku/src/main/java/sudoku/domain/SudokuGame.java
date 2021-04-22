@@ -13,15 +13,18 @@ import java.util.*;
  */
 public class SudokuGame {
     private int[][] sudoku;
+    private int[][] solution;
     private int difficulty;
     
     public SudokuGame() {
         sudoku = new int[9][9];
-        difficulty = 36;
+        difficulty = 25;
     }
     
     public void newSudoku() {
+        sudoku = new int[9][9];
         generateSudoku(0);
+        solution = copy(sudoku);
         addDifficultyLevel(this.difficulty);
     }
    
@@ -31,11 +34,11 @@ public class SudokuGame {
         }
         int row = index / 9;
         int column = index % 9;
-        
         List<Integer> values = new ArrayList<Integer>();
-        for (int i = 1; i <= 9; i++) values.add(i);
+        for (int i = 1; i <= 9; i++) {
+            values.add(i);
+        }
         Collections.shuffle(values);
-
         while (values.size() > 0) {
             int value = getNextPossibleValue(column, row, values);
             if (value == -1) { 
@@ -106,10 +109,21 @@ public class SudokuGame {
             if (sudoku[row][column] == 0) {
                 continue;
             }
-
             sudoku[row][column] = 0;
             amountToReplace--;
         }
+    }
+    
+    public boolean checkSudoku() {
+        boolean check = true;
+        for (int row = 0; row < 9; row++) {
+            for (int column = 0; column < 9; column++) {
+                if (solution[row][column] != sudoku[row][column]) {
+                    check = false;
+                }
+            }
+        }
+        return check;
     }
     
     public void setValue(int column, int row, int value) {
@@ -134,6 +148,15 @@ public class SudokuGame {
     
     public int getDifficulty() {
         return this.difficulty;
+    }
+    
+    public int[][] copy(int[][] game) {
+        int[][] copy = new int[9][9];
+        for (int row = 0; row < 9; row++) {
+            for (int column = 0; column < 9; column++)
+                copy[row][column] = game[row][column];
+        }
+        return copy;
     }
     
     public void print() {

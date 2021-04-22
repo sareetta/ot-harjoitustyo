@@ -25,8 +25,8 @@ import sudoku.domain.SudokuGame;
  * @author sareetta
  */
 public class SudokuUi extends Application {
-     private SudokuGame sudoku;
-     private SudokuDisplay sudokuDisplay;
+    private SudokuGame sudoku;
+    private SudokuDisplay sudokuDisplay;
      
      @Override
     public void start(Stage stage) {
@@ -55,9 +55,9 @@ public class SudokuUi extends Application {
         exit.setMaxWidth(300);
         exit.setStyle("-fx-background-color: #9198e5;" + "-fx-border-color: black");
         
-
         menu.setAlignment(Pos.CENTER);
         menu.getChildren().addAll(welcome, play, scores, exit);
+        
         menuLayout.setCenter(menu);
         
         Scene menuScene = new Scene(menuLayout, 800, 600);
@@ -70,15 +70,19 @@ public class SudokuUi extends Application {
         
         Label level = new Label("Choose difficulty:");
         Button easyPlay = new Button("Easy");
+        Button mediumPlay = new Button("Medium");
         Button back = new Button("Back to menu");
         
         level.setFont(Font.font("Lucida Sans Unicode", FontWeight.MEDIUM, 40));
         easyPlay.setFont(Font.font("Lucida Sans Unicode", 25));
         easyPlay.setMaxWidth(300);
         easyPlay.setStyle("-fx-background-color: #9198e5;" + "-fx-border-color: black");
+        mediumPlay.setFont(Font.font("Lucida Sans Unicode", 25));
+        mediumPlay.setMaxWidth(300);
+        mediumPlay.setStyle("-fx-background-color: #9198e5;" + "-fx-border-color: black");
         
         playMenu.setAlignment(Pos.CENTER);
-        playMenu.getChildren().addAll(level, easyPlay);
+        playMenu.getChildren().addAll(level, easyPlay, mediumPlay);
         
         HBox backButton = new HBox(30);
         backButton.setPadding(new Insets(20));
@@ -93,11 +97,11 @@ public class SudokuUi extends Application {
         
         Scene playScene = new Scene(playLayout, 800, 600);
         
-        HBox sudokuLayout = new HBox();
+        BorderPane sudokuLayout = new BorderPane();
         sudokuLayout.setStyle("-fx-background-color: linear-gradient(to top, #e66465, #9198e5);");
         
         VBox buttons = new VBox(10);
-        buttons.setPadding(new Insets(30));
+        buttons.setPadding(new Insets(10));
         
         Button newSudoku = new Button("New game");
         Button check = new Button("Check");
@@ -116,12 +120,24 @@ public class SudokuUi extends Application {
         buttons.getChildren().addAll(newSudoku, check, back2);
         buttons.setAlignment(Pos.BOTTOM_LEFT);
         
+        VBox result = new VBox(10);
+        result.setPadding(new Insets(10));
+        
+        Label solution = new Label();
+        solution.setFont(Font.font("Lucida Sans Unicode", 20));
+       
+        result.getChildren().addAll(solution);
+        result.setAlignment(Pos.CENTER);
+        
+        HBox sudokuBottomView = new HBox(10);
+        sudokuBottomView.setPadding(new Insets(10));
+        sudokuBottomView.getChildren().addAll(buttons, result);
+        
         GridPane sudokuBoard = new GridPane();
-        sudokuBoard.setPadding(new Insets(70));
-        sudokuBoard.setAlignment(Pos.CENTER_RIGHT);  
+        sudokuBoard.setAlignment(Pos.CENTER);  
          
-        sudokuLayout.getChildren().addAll(buttons,sudokuBoard);
-        sudokuLayout.setAlignment(Pos.CENTER);
+        sudokuLayout.setCenter(sudokuBoard);
+        sudokuLayout.setBottom(sudokuBottomView);
         
         Scene sudokuScene = new Scene(sudokuLayout, 800, 600);
         
@@ -134,25 +150,57 @@ public class SudokuUi extends Application {
         });
         
         easyPlay.setOnAction((event) -> {
+            sudoku.setDifficulty(1);
             sudoku.newSudoku();
-            sudoku.setDifficulty(36);
-            sudokuDisplay.show(sudoku, sudokuBoard);
+            sudokuDisplay.showSudoku(sudoku, sudokuBoard);
             stage.setScene(sudokuScene);
         });
         
+        mediumPlay.setOnAction((event) -> {
+            sudoku.setDifficulty(35);
+            sudoku.newSudoku();
+            sudokuDisplay.showSudoku(sudoku, sudokuBoard);
+            stage.setScene(sudokuScene);
+        });
+       
+        check.setOnAction((event) -> {
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    String value = sudokuDisplay.board[i][j].getText();
+                    if(value.matches("1|2|3|4|5|6|7|8|9")) {
+                       sudoku.setValue(i, j, Integer.parseInt(value));
+                    }else {
+                        break;
+                    } 
+                }
+            }
+           
+            if(!sudoku.checkSudoku()) {
+                solution.setText("Your Sudoku is incorrect :(\n"
+                        + "Try again or start a new game.");
+            }else {
+                solution.setText("Congratulations,\n"
+                        + "you solved the Sudoku!");
+            }
+            
+        });
+       
         back.setOnAction((event) -> {
             stage.setScene(menuScene);
+            solution.setText("");
         });
         
         back2.setOnAction((event) -> {
             stage.setScene(playScene);
+            solution.setText("");
         });
         
+      
         stage.setScene(menuScene);
         stage.setTitle("Sudoku");
         stage.show();
-       
-    }
+        
+    } 
 
     public static void main(String[] args) {
         launch();
