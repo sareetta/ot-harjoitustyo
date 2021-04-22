@@ -14,4 +14,5 @@ Päivä | Aika | Mitä tein?
 17.4 | 1 | Checkstyle virheiden korjaus
 19.4 | 1 | Alustava pakkaus-/luokkakaavio
 21.4 | 0,5 | Korjasin sovelluslogiikan toimivaksi
+22.4 | 4 | Sudokun tarkistamisen toteutus ja toisen vaikeusasteen lisääminen
 Yht. | 51,5 |
