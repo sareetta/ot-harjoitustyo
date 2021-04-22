@@ -15,4 +15,4 @@ Päivä | Aika | Mitä tein?
 19.4 | 1 | Alustava pakkaus-/luokkakaavio
 21.4 | 0,5 | Korjasin sovelluslogiikan toimivaksi
 22.4 | 4 | Sudokun tarkistamisen toteutus ja toisen vaikeusasteen lisääminen
-Yht. | 51,5 |
+Yht. | 55,5 |
