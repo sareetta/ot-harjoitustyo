@@ -150,7 +150,7 @@ public class SudokuUi extends Application {
         });
         
         easyPlay.setOnAction((event) -> {
-            sudoku.setDifficulty(1);
+            sudoku.setDifficulty(25);
             sudoku.newSudoku();
             sudokuDisplay.showSudoku(sudoku, sudokuBoard);
             stage.setScene(sudokuScene);
