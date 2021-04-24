@@ -42,7 +42,6 @@ public class SudokuDisplay {
                     } 
                        
                     valueCell.setTextAlignment(TextAlignment.CENTER);
-                    valueCell.setWrapText(true);
                     sudokuBoard.add(valueCell, i, j);
                         
                     board[i-1][j-1] = new TextArea("" + sudoku.getValue(i-1, j-1));
