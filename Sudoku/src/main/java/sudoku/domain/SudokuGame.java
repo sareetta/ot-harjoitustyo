@@ -153,8 +153,9 @@ public class SudokuGame {
     public int[][] copy(int[][] game) {
         int[][] copy = new int[9][9];
         for (int row = 0; row < 9; row++) {
-            for (int column = 0; column < 9; column++)
+            for (int column = 0; column < 9; column++) {
                 copy[row][column] = game[row][column];
+            }
         }
         return copy;
     }
