@@ -17,4 +17,5 @@ Päivä | Aika | Mitä tein?
 22.4 | 4 | Sudokun tarkistamisen toteutus ja toisen vaikeusasteen lisääminen
 23.4 | 6 | Käyttöliittymän edistäminen ja kellon lisääminen
 24.4 | 2 | Sekvenssikaavio sudokun generoimisesta ja tarkistuksesta sekä selitys
-Yht. | 63,5 |
+25.4 | 1,5 | Uusia testejä sovelluslogiikalle
+Yht. | 65 |
