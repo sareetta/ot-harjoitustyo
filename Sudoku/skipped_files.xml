@@ -7,4 +7,5 @@
 <suppressions>
     <suppress files="sudoku.ui.SudokuUi.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="sudoku.ui.SudokuDisplay.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="sudoku.ui.Timer.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>
