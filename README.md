@@ -9,6 +9,8 @@
 
 [Arkkitehtuurikuvaus](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+## Releaset
+[Viikko 5](https://github.com/sareetta/ot-harjoitustyo/releases)
 ## Komentorivitoiminnot
 
 ### Ohjelman suoritus
