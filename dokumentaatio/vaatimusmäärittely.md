@@ -12,14 +12,14 @@ Pelissä jokainen käyttäjä on rooliltaan _normaali_ _käyttäjä_.
 ## Perusversion toiminnallisuudet
 * Sovelluksen käynnistyessä
   * - [x] Käyttäjä voi valita haluaako aloittaa pelaamisen vai katsoa ennätysaikoja
-  * Käyttäjä voi valita kahdesta vaikeustasosta _easy_ ja _medium_ mieluisemman
+  * - [x] Käyttäjä voi valita kahdesta vaikeustasosta _easy_ ja _medium_ mieluisemman
 * - [x] Kun käyttäjä aloittaa pelin, hänelle generoidaan peliruudukko. Ruudukkoon syötetään numeroita näppäimistöltä klikkaamalla hiirellä haluttua sijoituskohtaa
-* Ruudulla näkyy kello, josta pelaaja voi seurata kauanko hänellä menee aikaa pelin ratkaisemiseen
-* Käyttäjä pystyy pelin aikana tarkastamaan ratkaisunsa tarkistusnapista
+* - [x] Ruudulla näkyy kello, josta pelaaja voi seurata kauanko pelin ratkaisuun kuluu aikaa
+* - [x] Käyttäjä pystyy pelin aikana tarkastamaan ratkaisunsa tarkistusnapista
 * Kun ruudukko on täytetty oikein kokonaisuudessaan eli tarkistus menee läpi, peli päättyy
 * Pelin päättymisen jälkeen pelaajalta kysytään nimimerkki, joka tallennetaan tilastoihin hänen peliaikansa kanssa.
 * Jos käyttäjä valitsee katsoa tilastoja, niin hänelle näytetään 10 parhaiten sijoittunutta käyttäjää molemmista vaikeustasoista
-* Vaikeustasot eroavat toisistaan niissä olevien valmiiksi täytettyjen ruutujen määrällä
+* - [x] Vaikeustasot eroavat toisistaan niissä olevien valmiiksi täytettyjen ruutujen määrällä
 
 ## Jatkokehitysideoita
 * Mahdollisuus jatkaa jo aloitettua peliä eli pelitilanteen tallentaminen
