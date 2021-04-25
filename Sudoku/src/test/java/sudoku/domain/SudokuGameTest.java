@@ -27,6 +27,11 @@ public class SudokuGameTest {
     }
     
     @Test
+    public void constructorSetsDifficulty() {
+        assertTrue(sudoku.getDifficulty() == 25);
+    }
+    
+    @Test
     public void newSudokuSetsBoardWithCorrectHeight() {
         assertTrue(9 == sudoku.getSudoku().length);
     }
@@ -130,7 +135,7 @@ public class SudokuGameTest {
         assertTrue(sudoku.getValue(1, 1) == 1);
     }
     
-     @Test
+    @Test
     public void setAndGetDifficultyWorksCorrectly() {
         sudoku.setDifficulty(35);
         assertTrue(sudoku.getDifficulty() == 35);
