@@ -27,6 +27,13 @@ mvn jacoco:report
 ```
 Komento luo target-kansioon projektista testien rivi- ja haaraumakattavuusraportin (target/site/jacoco/index.html).
 
+### Suoritettavan Jarin generointi
+
+```javascript
+mvn package
+```
+Komento generoi hakemistoon target suoritettavan jar -tiedoston Sudoku-1.0-SNAPSHOT.jar
+
 ### Checkstyle
 Checkstyle-raportin saa komennolla:
 ```javascript
