@@ -1,5 +1,5 @@
 /**
- * Sovelluslogiikka 
+ * Application logic
  */
 
 package sudoku.domain;
