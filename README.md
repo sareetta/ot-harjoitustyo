@@ -9,6 +9,8 @@
 
 [Arkkitehtuurikuvaus](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Käyttöohje](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 ## Releaset
 [Viikko 5](https://github.com/sareetta/ot-harjoitustyo/releases)
 ## Komentorivitoiminnot
@@ -42,4 +44,12 @@ Checkstyle-raportin saa komennolla:
 mvn jxr:jxr checkstyle:checkstyle
 ```
 Komento luo target-kansioon projektista tyylivirheraportin (target/site/checkstyle.html).
+
+### JavaDoc
+JavaDoc generoidaan komennolla
+```javascript
+mvn javadoc:javadoc
+```
+JavaDocia voi tarkastella avaamalla selaimella tiedosto target/site/apidocs/index.html
+
 
