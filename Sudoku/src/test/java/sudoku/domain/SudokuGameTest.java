@@ -5,6 +5,7 @@
  */
 package sudoku.domain;
 
+import java.util.*;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,10 +16,16 @@ import org.junit.Test;
  */
 public class SudokuGameTest {
     SudokuGame sudoku;
+    List<Integer> values;
     
     @Before
     public void setUp() {
         sudoku = new SudokuGame();
+        values = new ArrayList<Integer>();
+        for(int i = 1; i <= 9; i++) {
+            values.add(i);
+        }
+        
     }
     
     @Test
@@ -81,7 +88,7 @@ public class SudokuGameTest {
         assertTrue(!sudoku.isPossibleSubgrid(2, 2, 8));
     }
     
-    @Test
+   @Test
     public void isPossibleSubgridSetsValueToRow0IfRowIsLessThan3() {
         sudoku.setValue(2, 0, 8);
         assertTrue(!sudoku.isPossibleSubgrid(1, 1, 8));
@@ -117,9 +124,57 @@ public class SudokuGameTest {
         assertTrue(!sudoku.isPossibleSubgrid(1, 6, 8));
     }
     
-     @Test
+    @Test
+    public void isPossibleRowReturnsTrueIfValueCanBeInserted() {
+        assertTrue(sudoku.isPossibleRow(0, 2));
+    }
+    
+    @Test
+    public void isPossibleRowReturnsFalseIfValueCanNotBeInserted() {
+        sudoku.setValue(0, 0, 2);
+        assertTrue(!sudoku.isPossibleRow(0, 2));
+    }
+    
+    @Test
+    public void isPossibleColumnReturnsTrueIfValueCanBeInserted() {
+        assertTrue(sudoku.isPossibleColumn(0, 2));
+    }
+    
+    @Test
+    public void isPossibleColumnReturnsFalseIfValueCanNotBeInserted() {
+        sudoku.setValue(0, 0, 2);
+        assertTrue(sudoku.isPossibleColumn(1, 2));
+    }
+    
+    @Test
+    public void getNextPossibleValueReturnPossibleValue() {
+        sudoku.setValue(0, 1, 1);
+        int value = sudoku.getNextPossibleValue(0, 0, values);
+        assertTrue(sudoku.isPossibleSubgrid(0, 0, value));
+    }
+    
+    @Test
+    public void checkSudokuWorksIfSudokuNotCorrect() {
+        sudoku.newSudoku();
+        assertTrue(!sudoku.checkSudoku());
+    }
+    
+    @Test
+    public void checkSudokuWorkdIfSudokuIsCorrect() {
+        sudoku.newSudoku();
+        
+        int[][] solution = sudoku.solution;
+        for (int i=0; i<9; i++) {
+            for (int j=0; j<9; j++) {
+                sudoku.setValue(i, j, solution[j][i]);
+            }
+        }
+        assertTrue(sudoku.checkSudoku());
+    }
+    
+    @Test
     public void setAndGetValueWorksCorrectly() {
-        sudoku.setValue(1,1,8);
+        sudoku.setValue(1, 1, 8);
         assertTrue(sudoku.getValue(1,1) == 8);
     }
     
@@ -134,6 +189,7 @@ public class SudokuGameTest {
         sudoku.setValue(1,1,-1);
         assertTrue(sudoku.getValue(1, 1) == 1);
     }
+    
     
     @Test
     public void setAndGetDifficultyWorksCorrectly() {

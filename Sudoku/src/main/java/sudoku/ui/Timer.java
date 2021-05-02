@@ -36,7 +36,7 @@ public class Timer {
     private void init() {
         timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0),
-                    e -> increaseTime()),
+                        e -> increaseTime()),
                 new KeyFrame(Duration.seconds(1)));
 
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -56,7 +56,7 @@ public class Timer {
         } else if (seconds < 10 && minutes > 60) {
             this.time.setText(minutes + ":0" + seconds);
         } else {
-            this.time.setText(minutes + ":" + seconds);
+             this.time.setText(minutes + ":" + seconds);
         }
     }
 
@@ -74,12 +74,16 @@ public class Timer {
         this.minutes = 0;
     }
     
-    public void continueTime() {
+    public void replay() {
         timeline.play();
     }
 
     public Label getTime() {
         return this.time;
+    }
+    
+    public String Time() {
+        return time.getText();
     }
     
     public String toString() {
