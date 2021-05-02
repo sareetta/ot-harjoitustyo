@@ -18,4 +18,6 @@ Päivä | Aika | Mitä tein?
 23.4 | 6 | Käyttöliittymän edistäminen ja kellon lisääminen
 24.4 | 2 | Sekvenssikaavio sudokun generoimisesta ja tarkistuksesta sekä selitys
 25.4 | 1,5 | Uusia testejä sovelluslogiikalle
+28.4 | 6 | Tietokannan tekoa
+29.4 | 5 | Tietokantaa ja käyttöliittymää
 Yht. | 65 |
