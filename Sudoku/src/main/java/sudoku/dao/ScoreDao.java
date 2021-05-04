@@ -21,13 +21,16 @@ public class ScoreDao implements SQLDao {
     private ResultSet rs;
     
     /**
-     * Constructor method. Calls createTable to create a table if it doesn't exist to avoid errors.
+     * Constructor method.Calls createTable to create a table if it doesn't exist to avoid errors.
+     * @param database
+     * @param easyTable
+     * @param mediumTable
      * @throws SQLException if an error occurs.
      */
-    public ScoreDao(String database) throws SQLException {
+    public ScoreDao(String database, String easyTable, String mediumTable) throws SQLException {
         this.database = database;
         connect();
-        createTable();
+        createTable(easyTable, mediumTable);
         disconnect();
     }
     
@@ -121,22 +124,26 @@ public class ScoreDao implements SQLDao {
      * @throws SQLException if an error occurs.
      */
     @Override
-    public void createTable() throws SQLException {
-        Statement s = db.createStatement();
-        String strQuery = ""
-                + "CREATE TABLE IF NOT EXISTS Easy"
+    public void createTable(String easyTable, String mediumTable) throws SQLException {
+        try {
+            Statement s = db.createStatement();
+            String strQuery = ""
+                + "CREATE TABLE IF NOT EXISTS " + easyTable
                 + " (id SERIAL,"
                 + " name STRING,"
                 + " time STRING)";
-        s.execute(strQuery);
+            s.execute(strQuery);
         
-        strQuery = ""
-                + "CREATE TABLE IF NOT EXISTS Medium"
+            strQuery = ""
+                + "CREATE TABLE IF NOT EXISTS " + mediumTable
                 + " (id SERIAL,"
                 + " name STRING,"
                 + " time STRING)";
-        s.execute(strQuery);
-        s.close();
+            s.execute(strQuery);
+            s.close();
+        } catch (SQLException e) {
+            System.out.println("Exception in createTables: " + e);
+        }
     }
     
 }

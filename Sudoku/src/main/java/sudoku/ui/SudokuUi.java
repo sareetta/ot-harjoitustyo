@@ -39,14 +39,17 @@ public class SudokuUi extends Application {
     
     @Override
     public void init() throws Exception {
-        Properties properties = new Properties();
+        Properties prop = new Properties();
+        prop.load(new FileInputStream("config.properties"));
+        String sudokuDB = prop.getProperty("sudokuDB");
+        String easyTable = prop.getProperty("easyTable");
+        String mediumTable = prop.getProperty("mediumTable");
 
-        properties.load(new FileInputStream("config.properties"));
-        
-        String scoresFile = properties.getProperty("sudokuDB");
-        String Dburl = "jdbc:sqlite:./"+scoresFile;
-        
-        scoreDao = new ScoreDao(Dburl);
+        String userWorkingDir = System.getProperty("user.dir");
+        String fileSeparator = System.getProperty("file.separator");
+        String dbUrl = "jdbc:sqlite:" + userWorkingDir + fileSeparator + sudokuDB;
+
+        scoreDao = new ScoreDao(dbUrl, easyTable, mediumTable);
     }
     
     @Override
