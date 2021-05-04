@@ -291,7 +291,7 @@ public class SudokuUi extends Application {
         });
         
         easyPlay.setOnAction((event) -> {
-            sudoku.setDifficulty(25);
+            sudoku.setDifficulty(1);
             sudoku.newSudoku();
             sudokuDisplay.showSudoku(sudoku, sudokuBoard);
             stage.setScene(sudokuScene);
@@ -346,7 +346,7 @@ public class SudokuUi extends Application {
                 
                 if (sudoku.getDifficulty() == 35) {
                     mediumScores.create(new SudokuScore(0, nameArea.getText(), time.Time()));
-                } else if (sudoku.getDifficulty() == 25) {
+                } else if (sudoku.getDifficulty() == 1) {
                     easyScores.create(new SudokuScore(0, nameArea.getText(), time.Time()));
                 }
                 

@@ -5,6 +5,8 @@
  */
 package sudoku.dao;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.List;
 import org.junit.After;
@@ -18,7 +20,7 @@ import sudoku.domain.SudokuScore;
  * @author sareetta
  */
 public class ScoreDaoTest {
-    private SQLDao test;
+    private ScoreDao test;
     
     public ScoreDaoTest() {
     }
@@ -27,18 +29,14 @@ public class ScoreDaoTest {
     @Before
     public void setUp() throws SQLException {
         test = new ScoreDao("jdbc:sqlite:./test.db", "easy");
+        test.connect();
         test.createTable();
     }
     
     @After
-    public void tearDown() {
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:./test.db");
-            PreparedStatement stmt = connection.prepareStatement("DROP TABLE IF EXISTS easy");
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+    public void tearDown() throws Exception{
+        test.disconnect();
+        Files.deleteIfExists(Paths.get("jdbc:sqlite:./test.db"));
     }
     
     @Test
