@@ -17,6 +17,9 @@ import sudoku.domain.SudokuScore;
 public class ScoreDao implements SQLDao {
     private String database;
     private String tableName;
+    private Connection db;
+    private PreparedStatement p;
+    private ResultSet rs;
     
     /**
      * Constructor method. Calls createTable to create a table if it doesn't exist to avoid errors.
@@ -25,7 +28,36 @@ public class ScoreDao implements SQLDao {
     public ScoreDao(String database, String tableName) throws SQLException {
         this.database = database;
         this.tableName = tableName;
+        connect();
         createTable();
+        disconnect();
+    }
+    
+     public void connect() {
+        try {
+            if (db == null) {
+                db = DriverManager.getConnection(this.database);
+            } else {
+                disconnect();
+                db = DriverManager.getConnection(this.database);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception in connect: " + e);
+        }
+    }
+
+    public void disconnect() {
+        try {
+            db.close();
+            if (p != null) {
+                p.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception in disconnect: " + e);;
+        }
     }
     
     /**
@@ -35,17 +67,16 @@ public class ScoreDao implements SQLDao {
     @Override
     public void create(SudokuScore score) {
         try {
-            Connection connection = DriverManager.getConnection(this.database);
             String strQuery = "INSERT INTO $tableName (name, time)"
                   + " VALUES (?, ?)";
             String query = strQuery.replace("$tableName", this.tableName);
-            PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setString(1, score.getName());
-            stmt.setString(2, score.getTime());
+            p = db.prepareStatement(query);
+            p.setString(1, score.getName());
+            p.setString(2, score.getTime());
         
-            stmt.executeUpdate();
-            stmt.close();
-            connection.close();
+            p.executeUpdate();
+            p.close();
+            db.close();
         
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -61,22 +92,19 @@ public class ScoreDao implements SQLDao {
         List<SudokuScore> scores = new ArrayList<>();
         
         try {
-            Connection connection = DriverManager.getConnection(this.database);
-        
             String strQuery = "SELECT * FROM $tableName"
                   + " ORDER BY time ASC;";
             String query = strQuery.replace("$tableName", this.tableName);
-            PreparedStatement stmt = connection.prepareStatement(query);
+            p = db.prepareStatement(query);
             
-        
-            ResultSet rs = stmt.executeQuery();
+            rs = p.executeQuery();
         
             while (rs.next()) {
                 scores.add(new SudokuScore(rs.getInt("id"), rs.getString("name"), rs.getString("time")));
             }
         
-            stmt.close();
-            connection.close();
+            p.close();
+            db.close();
         
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -91,19 +119,17 @@ public class ScoreDao implements SQLDao {
      */
     @Override
     public void createTable() throws SQLException {
-        Connection connection = DriverManager.getConnection(this.database);
-        
         String strQuery = ""
                 + "CREATE TABLE IF NOT EXISTS $tableName"
                 + " (id SERIAL,"
                 + " name STRING,"
                 + " time STRING)";
         String query = strQuery.replace("$tableName", this.tableName);
-        PreparedStatement stmt = connection.prepareStatement(query);
+        p = db.prepareStatement(query);
       
-        stmt.executeUpdate();
-        stmt.close();
-        connection.close();
+        p.executeUpdate();
+        p.close();
+        db.close();
     }
     
 }
