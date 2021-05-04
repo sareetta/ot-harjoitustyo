@@ -19,7 +19,7 @@ public interface SQLDao {
      * @param tableName
      * @throws SQLException if an error occurs.
     */
-    public void createTable(String tableName) throws SQLException;
+    public void createTable() throws SQLException;
     
     /**
      * Method adds a new score to the database table.

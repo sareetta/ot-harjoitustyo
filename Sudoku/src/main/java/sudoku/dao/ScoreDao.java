@@ -26,8 +26,9 @@ public class ScoreDao implements SQLDao {
      */
     public ScoreDao(String database) throws SQLException {
         this.database = database;
-        createTable("Easy");
-        createTable("Medium");
+        connect();
+        createTable();
+        disconnect();
     }
     
     /**
@@ -120,18 +121,22 @@ public class ScoreDao implements SQLDao {
      * @throws SQLException if an error occurs.
      */
     @Override
-    public void createTable(String tableName) throws SQLException {
-        connect();
+    public void createTable() throws SQLException {
+        Statement s = db.createStatement();
         String strQuery = ""
-                + "CREATE TABLE IF NOT EXISTS $tableName"
+                + "CREATE TABLE IF NOT EXISTS Easy"
                 + " (id SERIAL,"
                 + " name STRING,"
                 + " time STRING)";
-        String query = strQuery.replace("$tableName", tableName);
-        p = db.prepareStatement(query);
-      
-        p.executeUpdate();
-        disconnect();
+        s.execute(strQuery);
+        
+        strQuery = ""
+                + "CREATE TABLE IF NOT EXISTS Medium"
+                + " (id SERIAL,"
+                + " name STRING,"
+                + " time STRING)";
+        s.execute(strQuery);
+        s.close();
     }
     
 }
