@@ -106,14 +106,4 @@ public class ScoreDao implements SQLDao {
         connection.close();
     }
     
-    /**
-     * Method used to set path to the database. Used for testing the class.
-     * @param database Path to the database to be used.
-     */
-    @Override
-    public void setDatabase(String database) {
-        this.database = database;
-    }
-    
-    
 }

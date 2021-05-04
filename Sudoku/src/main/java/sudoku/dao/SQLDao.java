@@ -32,10 +32,4 @@ public interface SQLDao {
      */
     public List<SudokuScore> list();
     
-    /**
-     * Method used to set path to the database.
-     * @param database Path to the database to be used.
-     */
-    public void setDatabase(String database);
-    
 }
