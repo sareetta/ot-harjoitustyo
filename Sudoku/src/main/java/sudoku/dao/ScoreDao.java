@@ -124,6 +124,7 @@ public class ScoreDao implements SQLDao {
      */
     @Override
     public void createTable() throws SQLException {
+        connect();
         String strQuery = ""
                 + "CREATE TABLE IF NOT EXISTS $tableName"
                 + " (id SERIAL,"
@@ -134,6 +135,7 @@ public class ScoreDao implements SQLDao {
       
         p.executeUpdate();
         p.close();
+        disconnect();
     }
     
 }
