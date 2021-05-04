@@ -16,15 +16,15 @@ Pelissä jokainen käyttäjä on rooliltaan _normaali_ _käyttäjä_.
 * - [x] Kun käyttäjä aloittaa pelin, hänelle generoidaan peliruudukko. Ruudukkoon syötetään numeroita näppäimistöltä klikkaamalla hiirellä haluttua sijoituskohtaa
 * - [x] Ruudulla näkyy kello, josta pelaaja voi seurata kauanko pelin ratkaisuun kuluu aikaa
 * - [x] Käyttäjä pystyy pelin aikana tarkastamaan ratkaisunsa tarkistusnapista
-* Kun ruudukko on täytetty oikein kokonaisuudessaan eli tarkistus menee läpi, peli päättyy
-* Pelin päättymisen jälkeen pelaajalta kysytään nimimerkki, joka tallennetaan tilastoihin hänen peliaikansa kanssa.
-* Jos käyttäjä valitsee katsoa tilastoja, niin hänelle näytetään 10 parhaiten sijoittunutta käyttäjää molemmista vaikeustasoista
+* - [x] Kun ruudukko on täytetty oikein kokonaisuudessaan eli tarkistus menee läpi, peli päättyy
+* - [x] Pelin päättymisen jälkeen pelaajalta kysytään nimimerkki, joka tallennetaan tilastoihin hänen peliaikansa kanssa.
+* - [x] Jos käyttäjä valitsee katsoa tilastoja, niin hänelle näytetään 10 parhaiten sijoittunutta käyttäjää molemmista vaikeustasoista
 * - [x] Vaikeustasot eroavat toisistaan niissä olevien valmiiksi täytettyjen ruutujen määrällä
 
 ## Jatkokehitysideoita
 * Mahdollisuus jatkaa jo aloitettua peliä eli pelitilanteen tallentaminen
 * Vaikeustasojen lisääminen
-* Värien vaihtaminen ja muita visuaalisia ominaisuuksia
+* - [x...] Värien vaihtaminen ja muita visuaalisia ominaisuuksia
 * Peli voisi antaa vihjeitä tarvittaessa
 
 
