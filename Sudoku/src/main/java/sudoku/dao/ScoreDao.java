@@ -26,9 +26,7 @@ public class ScoreDao implements SQLDao {
      */
     public ScoreDao(String database) throws SQLException {
         this.database = database;
-        connect();
         createTable();
-        disconnect();
     }
     
     /**
@@ -122,6 +120,7 @@ public class ScoreDao implements SQLDao {
      */
     @Override
     public void createTable() throws SQLException {
+        connect();
         Statement s = db.createStatement();
         String strQuery = ""
                 + "CREATE TABLE IF NOT EXISTS Easy"
@@ -137,6 +136,7 @@ public class ScoreDao implements SQLDao {
                 + " time STRING)";
         s.execute(strQuery);
         s.close();
+        disconnect();
     }
     
 }
