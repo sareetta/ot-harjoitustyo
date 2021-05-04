@@ -23,8 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import sudoku.dao.EasyScoreDao;
-import sudoku.dao.MediumScoreDao;
+import sudoku.dao.ScoreDao;
 import sudoku.domain.SudokuGame;
 import sudoku.domain.SudokuScore;
 
@@ -35,8 +34,7 @@ import sudoku.domain.SudokuScore;
 public class SudokuUi extends Application {
     SudokuGame sudoku;
     SudokuDisplay sudokuDisplay;
-    EasyScoreDao easyScores;
-    MediumScoreDao mediumScores;
+    ScoreDao scoreDao;
     Timer time;
     
     @Override
@@ -48,8 +46,7 @@ public class SudokuUi extends Application {
         String scoresFile = properties.getProperty("sudokuDB");
         String Dburl = "jdbc:sqlite:./"+scoresFile;
         
-        easyScores = new EasyScoreDao(Dburl,"Easy");
-        mediumScores = new MediumScoreDao(Dburl,"Medium");
+        scoreDao = new ScoreDao(Dburl);
     }
     
     @Override
@@ -345,9 +342,9 @@ public class SudokuUi extends Application {
             if (nameArea.getText().length() < 16 && nameArea.getText().length() > 0) {
                 
                 if (sudoku.getDifficulty() == 35) {
-                    mediumScores.create(new SudokuScore(0, nameArea.getText(), time.Time()));
+                    scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Medium");
                 } else if (sudoku.getDifficulty() == 25) {
-                    easyScores.create(new SudokuScore(0, nameArea.getText(), time.Time()));
+                    scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
                 }
                 
                 nameArea.setText("");
@@ -365,8 +362,8 @@ public class SudokuUi extends Application {
             easyScoresList.getChildren().clear();
             mediumScoresList.getChildren().add(mediumTitle);
             easyScoresList.getChildren().add(easyTitle);
-            List<SudokuScore> scoresMedium = mediumScores.list();
-            List<SudokuScore> scoresEasy = easyScores.list();
+            List<SudokuScore> scoresMedium = scoreDao.list("Medium");
+            List<SudokuScore> scoresEasy = scoreDao.list("Easy");
             
             if (scoresMedium.isEmpty()) {
                 Label noScores = new Label("No scores!");

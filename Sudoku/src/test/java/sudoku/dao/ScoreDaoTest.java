@@ -28,8 +28,8 @@ public class ScoreDaoTest {
     
     @Before
     public void setUp() throws SQLException {
-        test = new ScoreDao("jdbc:sqlite:./test.db", "easy");
-        test.createTable();
+        test = new ScoreDao("jdbc:sqlite:./test.db");
+        test.createTable("easy");
     }
     
     @After
@@ -40,15 +40,15 @@ public class ScoreDaoTest {
     
     @Test
     public void methodListWorks() {
-        boolean list = test.list() instanceof List;
+        boolean list = test.list("easy") instanceof List;
         assertTrue(list);
     }
     
     @Test
     public void createAddsRowsToTheDatabase() {
-        int start = test.list().size();
-        test.create(new SudokuScore(0, "test", "00:10"));
-        int end = test.list().size();
+        int start = test.list("easy").size();
+        test.create(new SudokuScore(0, "test", "00:10"), "easy");
+        int end = test.list("easy").size();
         assertTrue(end == start + 1);
     }
 }

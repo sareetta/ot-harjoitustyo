@@ -16,7 +16,6 @@ import sudoku.domain.SudokuScore;
  */
 public class ScoreDao implements SQLDao {
     private String database;
-    private String tableName;
     private Connection db;
     private PreparedStatement p;
     private ResultSet rs;
@@ -25,10 +24,10 @@ public class ScoreDao implements SQLDao {
      * Constructor method. Calls createTable to create a table if it doesn't exist to avoid errors.
      * @throws SQLException if an error occurs.
      */
-    public ScoreDao(String database, String tableName) throws SQLException {
+    public ScoreDao(String database) throws SQLException {
         this.database = database;
-        this.tableName = tableName;
-        createTable();
+        createTable("Easy");
+        createTable("Medium");
     }
     
     /**
@@ -69,12 +68,12 @@ public class ScoreDao implements SQLDao {
      * @param score The name and time will be used for the new row to be added to the database.
      */
     @Override
-    public void create(SudokuScore score) {
+    public void create(SudokuScore score, String tableName) {
         try {
             connect();
             String strQuery = "INSERT INTO $tableName (name, time)"
                   + " VALUES (?, ?)";
-            String query = strQuery.replace("$tableName", this.tableName);
+            String query = strQuery.replace("$tableName", tableName);
             p = db.prepareStatement(query);
             p.setString(1, score.getName());
             p.setString(2, score.getTime());
@@ -92,13 +91,13 @@ public class ScoreDao implements SQLDao {
      * @return Returns a list of the scores in the database sorted by time in an ascending order.
      */
     @Override
-    public List<SudokuScore> list() {
+    public List<SudokuScore> list(String tableName) {
         List<SudokuScore> scores = new ArrayList<>();
         try {
             connect();
             String strQuery = "SELECT * FROM $tableName"
                   + " ORDER BY time ASC;";
-            String query = strQuery.replace("$tableName", this.tableName);
+            String query = strQuery.replace("$tableName", tableName);
             p = db.prepareStatement(query);
             
             rs = p.executeQuery();
@@ -121,14 +120,14 @@ public class ScoreDao implements SQLDao {
      * @throws SQLException if an error occurs.
      */
     @Override
-    public void createTable() throws SQLException {
+    public void createTable(String tableName) throws SQLException {
         connect();
         String strQuery = ""
                 + "CREATE TABLE IF NOT EXISTS $tableName"
                 + " (id SERIAL,"
                 + " name STRING,"
                 + " time STRING)";
-        String query = strQuery.replace("$tableName", this.tableName);
+        String query = strQuery.replace("$tableName", tableName);
         p = db.prepareStatement(query);
       
         p.executeUpdate();
