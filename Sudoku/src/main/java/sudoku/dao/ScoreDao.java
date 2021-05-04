@@ -120,12 +120,15 @@ public class ScoreDao implements SQLDao {
     }
     
     /**
-     * Method that creates the table into the database if it does not yet exist.
+     * Method that creates the table into the database if they do not yet exist.
+     * @param easyTable
+     * @param mediumTable
      * @throws SQLException if an error occurs.
      */
     @Override
     public void createTable(String easyTable, String mediumTable) throws SQLException {
         try {
+            connect();
             Statement s = db.createStatement();
             String strQuery = ""
                 + "CREATE TABLE IF NOT EXISTS " + easyTable
@@ -141,6 +144,8 @@ public class ScoreDao implements SQLDao {
                 + " time STRING)";
             s.execute(strQuery);
             s.close();
+            disconnect();
+            
         } catch (SQLException e) {
             System.out.println("Exception in createTables: " + e);
         }
