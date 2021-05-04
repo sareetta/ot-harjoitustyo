@@ -66,6 +66,7 @@ public class ScoreDao implements SQLDao {
      */
     @Override
     public void create(SudokuScore score) {
+        connect();
         try {
             String strQuery = "INSERT INTO $tableName (name, time)"
                   + " VALUES (?, ?)";
@@ -75,8 +76,7 @@ public class ScoreDao implements SQLDao {
             p.setString(2, score.getTime());
         
             p.executeUpdate();
-            p.close();
-            db.close();
+            disconnect();
         
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -90,7 +90,7 @@ public class ScoreDao implements SQLDao {
     @Override
     public List<SudokuScore> list() {
         List<SudokuScore> scores = new ArrayList<>();
-        
+        connect();
         try {
             String strQuery = "SELECT * FROM $tableName"
                   + " ORDER BY time ASC;";
@@ -103,8 +103,7 @@ public class ScoreDao implements SQLDao {
                 scores.add(new SudokuScore(rs.getInt("id"), rs.getString("name"), rs.getString("time")));
             }
         
-            p.close();
-            db.close();
+            disconnect();
         
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -119,6 +118,7 @@ public class ScoreDao implements SQLDao {
      */
     @Override
     public void createTable() throws SQLException {
+        connect();
         String strQuery = ""
                 + "CREATE TABLE IF NOT EXISTS $tableName"
                 + " (id SERIAL,"
@@ -128,8 +128,7 @@ public class ScoreDao implements SQLDao {
         p = db.prepareStatement(query);
       
         p.executeUpdate();
-        p.close();
-        db.close();
+        disconnect();
     }
     
 }
