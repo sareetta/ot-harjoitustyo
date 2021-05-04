@@ -28,12 +28,13 @@ public class ScoreDao implements SQLDao {
     public ScoreDao(String database, String tableName) throws SQLException {
         this.database = database;
         this.tableName = tableName;
-        connect();
         createTable();
-        disconnect();
     }
     
-     public void connect() {
+    /**
+     * Method connects to the database.
+     */
+    public void connect() {
         try {
             if (db == null) {
                 db = DriverManager.getConnection(this.database);
@@ -46,6 +47,9 @@ public class ScoreDao implements SQLDao {
         }
     }
 
+    /**
+     * Method closes the connection to the database.
+     */
     public void disconnect() {
         try {
             db.close();
