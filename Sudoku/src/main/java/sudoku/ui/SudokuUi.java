@@ -45,7 +45,9 @@ public class SudokuUi extends Application {
         String easyTable = prop.getProperty("easyTable");
         String mediumTable = prop.getProperty("mediumTable");
 
-        String dbUrl = "jdbc:sqlite:./" + sudokuDB;
+        String userWorkingDir = System.getProperty("user.dir");
+        String fileSeparator = System.getProperty("file.separator");
+        String dbUrl = "jdbc:sqlite:" + userWorkingDir + fileSeparator + sudokuDB;
 
         scoreDao = new ScoreDao(dbUrl, easyTable, mediumTable);
     }

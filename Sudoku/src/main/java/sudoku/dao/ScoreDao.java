@@ -29,9 +29,7 @@ public class ScoreDao implements SQLDao {
      */
     public ScoreDao(String database, String easyTable, String mediumTable) throws SQLException {
         this.database = database;
-        connect();
         createTable(easyTable, mediumTable);
-        disconnect();
     }
     
     /**
