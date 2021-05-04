@@ -41,13 +41,11 @@ public class SudokuUi extends Application {
     public void init() throws Exception {
         Properties prop = new Properties();
         prop.load(new FileInputStream("config.properties"));
-        String sudokuDB = prop.getProperty("sudokuDB");
+        String sudokuDB = prop.getProperty("SudokuDB");
         String easyTable = prop.getProperty("easyTable");
         String mediumTable = prop.getProperty("mediumTable");
 
-        String userWorkingDir = System.getProperty("user.dir");
-        String fileSeparator = System.getProperty("file.separator");
-        String dbUrl = "jdbc:sqlite:" + userWorkingDir + fileSeparator + sudokuDB;
+        String dbUrl = "jdbc:sqlite:./" + sudokuDB;
 
         scoreDao = new ScoreDao(dbUrl, easyTable, mediumTable);
     }
@@ -291,7 +289,7 @@ public class SudokuUi extends Application {
         });
         
         easyPlay.setOnAction((event) -> {
-            sudoku.setDifficulty(25);
+            sudoku.setDifficulty(1);
             sudoku.newSudoku();
             sudokuDisplay.showSudoku(sudoku, sudokuBoard);
             stage.setScene(sudokuScene);
@@ -346,7 +344,7 @@ public class SudokuUi extends Application {
                 
                 if (sudoku.getDifficulty() == 35) {
                     scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Medium");
-                } else if (sudoku.getDifficulty() == 25) {
+                } else if (sudoku.getDifficulty() == 1) {
                     scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
                 }
                 
