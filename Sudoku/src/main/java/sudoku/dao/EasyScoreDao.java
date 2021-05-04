@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * 
  * @author sareetta
  */
-public class EasyScoreDao extends ScoreDao{
+public class EasyScoreDao extends ScoreDao {
     /**
      * Constructor method.
      * @param database   The used database.
@@ -20,7 +20,7 @@ public class EasyScoreDao extends ScoreDao{
      * @throws SQLException if an error occurs.
      */
     public EasyScoreDao(String database, String tableName) throws SQLException {
-        super(database,tableName);
+        super(database, tableName);
     }
     
 }

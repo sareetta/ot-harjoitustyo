@@ -14,7 +14,7 @@ import sudoku.domain.SudokuScore;
  * 
  * @author sareetta
  */
-public class ScoreDao implements SQLDao{
+public class ScoreDao implements SQLDao {
     private String database;
     private String tableName;
     
@@ -38,7 +38,7 @@ public class ScoreDao implements SQLDao{
             Connection connection = DriverManager.getConnection(this.database);
             String strQuery = "INSERT INTO $tableName (name, time)"
                   + " VALUES (?, ?)";
-            String query = strQuery.replace("$tableName",this.tableName);
+            String query = strQuery.replace("$tableName", this.tableName);
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, score.getName());
             stmt.setString(2, score.getTime());
@@ -65,7 +65,7 @@ public class ScoreDao implements SQLDao{
         
             String strQuery = "SELECT * FROM $tableName"
                   + " ORDER BY time ASC;";
-            String query = strQuery.replace("$tableName",this.tableName);
+            String query = strQuery.replace("$tableName", this.tableName);
             PreparedStatement stmt = connection.prepareStatement(query);
             
         
@@ -98,8 +98,8 @@ public class ScoreDao implements SQLDao{
                 + " (id SERIAL,"
                 + " name STRING,"
                 + " time STRING)";
-            String query = strQuery.replace("$tableName",this.tableName);
-            PreparedStatement stmt = connection.prepareStatement(query);
+        String query = strQuery.replace("$tableName", this.tableName);
+        PreparedStatement stmt = connection.prepareStatement(query);
       
         stmt.executeUpdate();
         stmt.close();

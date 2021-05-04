@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author sareetta
  */
-public class MediumScoreDao extends ScoreDao{
+public class MediumScoreDao extends ScoreDao {
     
     /**
      * Constructor method.
@@ -21,6 +21,6 @@ public class MediumScoreDao extends ScoreDao{
      * @throws SQLException if an error occurs.
      */
     public MediumScoreDao(String database, String tableName) throws SQLException {
-        super(database,tableName);
+        super(database, tableName);
     }
 }
