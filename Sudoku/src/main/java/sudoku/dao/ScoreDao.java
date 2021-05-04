@@ -70,8 +70,8 @@ public class ScoreDao implements SQLDao {
      */
     @Override
     public void create(SudokuScore score) {
-        connect();
         try {
+            connect();
             String strQuery = "INSERT INTO $tableName (name, time)"
                   + " VALUES (?, ?)";
             String query = strQuery.replace("$tableName", this.tableName);
@@ -94,8 +94,8 @@ public class ScoreDao implements SQLDao {
     @Override
     public List<SudokuScore> list() {
         List<SudokuScore> scores = new ArrayList<>();
-        connect();
         try {
+            connect();
             String strQuery = "SELECT * FROM $tableName"
                   + " ORDER BY time ASC;";
             String query = strQuery.replace("$tableName", this.tableName);

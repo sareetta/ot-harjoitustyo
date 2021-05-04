@@ -29,7 +29,6 @@ public class ScoreDaoTest {
     @Before
     public void setUp() throws SQLException {
         test = new ScoreDao("jdbc:sqlite:./test.db", "easy");
-        test.connect();
         test.createTable();
     }
     
