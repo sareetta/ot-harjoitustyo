@@ -26,7 +26,9 @@ public class ScoreDao implements SQLDao {
      */
     public ScoreDao(String database) throws SQLException {
         this.database = database;
+        connect();
         createTable();
+        disconnect();
     }
     
     /**
@@ -68,6 +70,7 @@ public class ScoreDao implements SQLDao {
      */
     @Override
     public void create(SudokuScore score, String tableName) {
+        connect();
         try {
             connect();
             String strQuery = "INSERT INTO $tableName (name, time)"
@@ -83,6 +86,7 @@ public class ScoreDao implements SQLDao {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        disconnect();
     }
     
     /**
@@ -91,6 +95,7 @@ public class ScoreDao implements SQLDao {
      */
     @Override
     public List<SudokuScore> list(String tableName) {
+        connect();
         List<SudokuScore> scores = new ArrayList<>();
         try {
             connect();
@@ -111,6 +116,7 @@ public class ScoreDao implements SQLDao {
             System.out.println(e.getMessage());
         }
         
+        disconnect();
         return scores;
     }
     
