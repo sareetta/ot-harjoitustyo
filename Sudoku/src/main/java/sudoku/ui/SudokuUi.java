@@ -347,7 +347,7 @@ public class SudokuUi extends Application {
                 if (sudoku.getDifficulty() == 35) {
                     scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Medium");
                 } else if (sudoku.getDifficulty() == 25) {
-                  //  scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
+                    scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
                 }
                 
                 nameArea.setText("");
@@ -366,7 +366,7 @@ public class SudokuUi extends Application {
             mediumScoresList.getChildren().add(mediumTitle);
             easyScoresList.getChildren().add(easyTitle);
             List<SudokuScore> scoresMedium = scoreDao.list("Medium");
-          //  List<SudokuScore> scoresEasy = scoreDao.list("Easy");
+            List<SudokuScore> scoresEasy = scoreDao.list("Easy");
             
             if (scoresMedium.isEmpty()) {
                 Label noScores = new Label("No scores!");
@@ -383,7 +383,7 @@ public class SudokuUi extends Application {
                 }
             }
             
-       /*     if (scoresEasy.isEmpty()) {
+            if (scoresEasy.isEmpty()) {
                 Label noScores = new Label("No scores!");
                 noScores.setFont(Font.font("Lucida Sans Unicode", 20));
                 easyScoresList.getChildren().add(noScores);
@@ -397,7 +397,7 @@ public class SudokuUi extends Application {
                     easyScoresList.getChildren().add(newRecord);
                 }
             }
-            */
+            
             stage.setScene(statisticsScene);
         }); 
         
