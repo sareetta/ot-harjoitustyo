@@ -28,9 +28,7 @@ public class ScoreDao implements SQLDao {
     public ScoreDao(String database, String tableName) throws SQLException {
         this.database = database;
         this.tableName = tableName;
-        connect();
         createTable();
-        disconnect();
     }
     
     /**
@@ -134,7 +132,6 @@ public class ScoreDao implements SQLDao {
         p = db.prepareStatement(query);
       
         p.executeUpdate();
-        p.close();
         disconnect();
     }
     
