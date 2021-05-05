@@ -297,7 +297,7 @@ public class SudokuUi extends Application {
         });
         
         easyPlay.setOnAction((event) -> {
-            sudoku.setDifficulty(1);
+            sudoku.setDifficulty(25);
             sudoku.newSudoku();
             sudokuDisplay.showSudoku(sudoku, sudokuBoard);
             stage.setScene(sudokuScene);
@@ -354,7 +354,7 @@ public class SudokuUi extends Application {
                     } catch (SQLException e) {
                         System.out.println("Exception in saving: " + e);
                     }
-                } else if (sudoku.getDifficulty() == 1) {
+                } else if (sudoku.getDifficulty() == 25) {
                     try {
                         easyDao.save(new SudokuScore(0, nameArea.getText(), time.Time()));
                     } catch (SQLException e) {
