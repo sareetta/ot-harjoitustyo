@@ -53,11 +53,11 @@ Käyttöliittymän, sovelluslogiikan ja tiedon pysyväistallennuksen luokkien v�
 ![Sudoku_package_class_diagram (1)](https://user-images.githubusercontent.com/81009944/116818453-24fc4280-ab74-11eb-8a04-2145f1a8c939.png)
 
 ## Tietojen pysyväistallennus
-Pakkauksen sudoku.dao luokkien EasyDao ja NormalDao kautta tehdään pelitulosten pitkäaikaistallennus tietokantaan. Itse tallennuksen hoitaa luokka DBHelper. Tämä luokka on vastuussa tietokannan ylläpidsta ja muokkaamisesta. EasyDao:n kautta tallennetaan omaan tauluunsa helpon vaikeusasteen Sudokuihin liittyviä tuloksia ja MediumDao puolestaan normaalin vaikeusasteen tuloksia. 
+Pakkauksen sudoku.dao luokkien EasyDao ja NormalDao kautta tehdään pelitulosten pitkäaikaistallennus tietokantaan. Itse tallennuksen hoitaa luokka DBScore. Tämä luokka on vastuussa tietokannan ylläpidsta ja muokkaamisesta. EasyDao:n kautta tallennetaan omaan tauluunsa helpon vaikeusasteen Sudokuihin liittyviä tuloksia ja MediumDao puolestaan normaalin vaikeusasteen tuloksia. 
 
 DAO-luokissa on myötäilty normaalia Data Access Object -mallia. Niissä on metodit rivien lisäämiseen tietokantatauluun ja taulun kaikkien rivien listaamiseen järjestyksessä suoritusajan mukaan. Luokat käyttävät rajapintaa SQLDao.
 
-Tulostietojen tallennus tapahtuu SQL-tietokantaan, jonka DBHelper luo tarvittaessa, mikäli sitä ei löydy. Tietokannassa on kunkin tuloksen kohdalla id, pelaajan antama käyttäjänimi sekä Sudokun suoritusaika.
+Tulostietojen tallennus tapahtuu SQL-tietokantaan, jonka DBScore luo tarvittaessa, mikäli sitä ei löydy. Tietokannassa on kunkin tuloksen kohdalla id, pelaajan antama käyttäjänimi sekä Sudokun suoritusaika.
 
 ## Päätoiminnallisuudet
 Tärkeimmät toiminnallisuudet Sudokun toiminnan kannalta ovat uuden Sudokun generoiminen ja Sudokun tarkastaminen. Erityisesti Sudokun generoiminen on välttämätöntä, jotta peliä voi pelata sovelluksessa.
