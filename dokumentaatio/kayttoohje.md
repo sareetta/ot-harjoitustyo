@@ -2,7 +2,7 @@
 Lataa tiedosto Sudoku.jar
 
 ## Konfigurointi
-Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, joka määrittelee pelituloksien tietokannan nimen. 
+Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, joka määrittelee pelituloksien tietokannan nimen sekä taulujen nimet. 
 Tiedoston muoto on seuraava:
 
 ```javascript
