@@ -6,6 +6,7 @@
 package sudoku.ui;
 
 import java.io.FileInputStream;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 import javafx.application.Application;
@@ -23,7 +24,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import sudoku.dao.ScoreDao;
+import sudoku.dao.DBEasyDao;
+import sudoku.dao.DBHelper;
+import sudoku.dao.DBMediumDao;
 import sudoku.domain.SudokuGame;
 import sudoku.domain.SudokuScore;
 
@@ -34,22 +37,25 @@ import sudoku.domain.SudokuScore;
 public class SudokuUi extends Application {
     SudokuGame sudoku;
     SudokuDisplay sudokuDisplay;
-    ScoreDao scoreDao;
+    DBMediumDao mediumDao;
+    DBEasyDao easyDao;
     Timer time;
     
     @Override
     public void init() throws Exception {
-        Properties prop = new Properties();
-        prop.load(new FileInputStream("config.properties"));
-        String sudokuDB = prop.getProperty("SudokuDB");
-        String easyTable = prop.getProperty("easyTable");
-        String mediumTable = prop.getProperty("mediumTable");
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("config.properties"));
+        String sudokuDB = properties.getProperty("sudokuDB");
+        String easyTable = properties.getProperty("easyTable");
+        String mediumTable = properties.getProperty("mediumTable");
 
-        String userWorkingDir = System.getProperty("user.dir");
-        String fileSeparator = System.getProperty("file.separator");
-        String dbUrl = "jdbc:sqlite:" + userWorkingDir + fileSeparator + sudokuDB;
+        String ud = System.getProperty("user.dir");
+        String fs = System.getProperty("file.separator");
+        String dbUrl = "jdbc:sqlite:" + ud + fs + sudokuDB;
 
-        scoreDao = new ScoreDao(dbUrl, easyTable, mediumTable);
+        DBHelper db = new DBHelper(dbUrl, easyTable, mediumTable);
+        easyDao = new DBEasyDao(db);
+        mediumDao = new DBMediumDao(db);
     }
     
     @Override
@@ -337,17 +343,23 @@ public class SudokuUi extends Application {
                         + time.toString());
                 stage.setScene(recordsScene);
             }
-            
-   
         });
         
         save.setOnAction((ActionEvent event) -> {
             if (nameArea.getText().length() < 16 && nameArea.getText().length() > 0) {
                 
                 if (sudoku.getDifficulty() == 35) {
-                    scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Medium");
+                    try {
+                        mediumDao.save(new SudokuScore(0, nameArea.getText(), time.Time()));
+                    } catch (SQLException e) {
+                        System.out.println("Exception in saving: " + e);
+                    }
                 } else if (sudoku.getDifficulty() == 1) {
-                    scoreDao.create(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
+                    try {
+                        easyDao.save(new SudokuScore(0, nameArea.getText(), time.Time()));
+                    } catch (SQLException e) {
+                        System.out.println("Exception in saving: " + e);
+                    }
                 }
                 
                 nameArea.setText("");
@@ -365,8 +377,8 @@ public class SudokuUi extends Application {
             easyScoresList.getChildren().clear();
             mediumScoresList.getChildren().add(mediumTitle);
             easyScoresList.getChildren().add(easyTitle);
-            List<SudokuScore> scoresMedium = scoreDao.list("Medium");
-            List<SudokuScore> scoresEasy = scoreDao.list("Easy");
+            List<SudokuScore> scoresMedium = mediumDao.list();
+            List<SudokuScore> scoresEasy = easyDao.list();
             
             if (scoresMedium.isEmpty()) {
                 Label noScores = new Label("No scores!");
