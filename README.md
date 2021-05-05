@@ -40,6 +40,12 @@ mvn package
 ```
 Komento generoi hakemistoon target suoritettavan jar -tiedoston Sudoku-1.0-SNAPSHOT.jar
 
+### Jarin ajaminen
+
+```javascript
+java -jar target/Sudoku-1.0-SNAPSHOT.jar
+```
+Jarin voi ajaa hakemistosta target. Ota huomioon, että config.properties tiedoston tulee tällöin olla myös target kansiossa.
 ### Checkstyle
 Checkstyle-raportin saa komennolla:
 ```javascript
