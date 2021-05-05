@@ -13,7 +13,7 @@ import sudoku.domain.SudokuScore;
  * Class for handling the Easy table in the database.
  * @author sareetta
  */
-public class EasyDao implements SQLDao{
+public class EasyDao implements SQLDao {
     private List<SudokuScore> scores;
     private DBHelper db;
     

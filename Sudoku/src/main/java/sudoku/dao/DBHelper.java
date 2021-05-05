@@ -21,9 +21,9 @@ public class DBHelper {
     /**
      * Constructor. 
      * Sets the database address and calls method create.
-     * @param dbUrl
-     * @param easyTable
-     * @param mediumTable 
+     * @param dbUrl       The address of the database.
+     * @param easyTable   The name of first table.
+     * @param mediumTable The name of the second table.
      */
     public DBHelper(String dbUrl, String easyTable, String mediumTable) {
         this.dbUrl = dbUrl;

@@ -14,7 +14,7 @@ import sudoku.domain.SudokuScore;
  * 
  * @author sareetta
  */
-public class MediumDao implements SQLDao{
+public class MediumDao implements SQLDao {
     public List<SudokuScore> scores;
     private DBHelper db;
     
