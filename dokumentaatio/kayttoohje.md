@@ -6,7 +6,7 @@ Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto conf
 Tiedoston muoto on seuraava:
 
 ```javascript
-SudokuDB=scores.db
+sudokuDB=scores.db
 easyTable=Easy
 mediumTable=Medium
 ```
