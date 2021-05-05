@@ -21,4 +21,6 @@ Päivä | Aika | Mitä tein?
 28.4 | 6 | Tietokannan tekoa
 29.4 | 5 | Tietokantaa ja käyttöliittymää
 2.5 | 6 | JavaDoc, arkkitehtuurikuvaus ja käyttöohje
-Yht. | 85 |
+4.5 | 5 | Ongelmia jarin ja tietokannan kanssa
+5.5 | 5 | Tietokanta korjattu ja testejä sille
+Yht. | 95 |
