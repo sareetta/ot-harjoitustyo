@@ -18,7 +18,7 @@ public class ScoreDao implements SQLDao {
     List<SudokuScore> scores;
     
     /**
-     * Constructor.Finds easy scores from the database.
+     * Constructor. Finds easy scores from the database.
      * 
      * @param db             The database.
      * @param tableName      The table from database.
