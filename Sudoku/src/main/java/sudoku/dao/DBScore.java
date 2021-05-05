@@ -12,7 +12,7 @@ import java.sql.*;
  * 
  * @author sareetta
  */
-public class DBHelper {
+public class DBScore {
     private String dbUrl;
     private Connection db;
     private PreparedStatement ps;
@@ -25,7 +25,7 @@ public class DBHelper {
      * @param easyTable   The name of first table.
      * @param mediumTable The name of the second table.
      */
-    public DBHelper(String dbUrl, String easyTable, String mediumTable) {
+    public DBScore(String dbUrl, String easyTable, String mediumTable) {
         this.dbUrl = dbUrl;
         connect();
         init(easyTable, mediumTable);
@@ -57,10 +57,10 @@ public class DBHelper {
     public void init(String easyTable, String mediumTable) {
         try {
             Statement s = db.createStatement();
-            String tableString = "CREATE TABLE IF NOT EXISTS " + easyTable + " (id SERIAL, name STRING, time, STRING);";
-            s.execute(tableString);
-            tableString = "CREATE TABLE IF NOT EXISTS " + mediumTable + " (id SERIAL, name STRING, time, STRING)";
-            s.execute(tableString);
+            String newTable = "CREATE TABLE IF NOT EXISTS " + easyTable + " (id SERIAL, name STRING, time, STRING);";
+            s.execute(newTable);
+            newTable = "CREATE TABLE IF NOT EXISTS " + mediumTable + " (id SERIAL, name STRING, time, STRING)";
+            s.execute(newTable);
             s.close();
         } catch (SQLException e) {
             System.out.println("Exception in create: " + e);
@@ -68,18 +68,18 @@ public class DBHelper {
     }
 
     /**
-     * Method for ResultSet.
+     * Method to get the ResultSet to point to the right table.
      * 
      * @param statement Statement object.
      * @return  returns the ResultSet.
      */
-    public ResultSet getResultSet(String statement) {
+    public ResultSet select(String statement) {
         rs = null;
         try {
             ps = db.prepareStatement(statement);
             rs = ps.executeQuery();
         } catch (SQLException e) {
-            System.out.println("Exception in getResultSet: " + e);
+            System.out.println("Exception in select: " + e);
         }
         return rs;
     }

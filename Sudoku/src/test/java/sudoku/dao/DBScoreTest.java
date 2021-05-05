@@ -20,34 +20,34 @@ import org.junit.Test;
  *
  * @author sareetta
  */
-public class DBHelperTest {
-    DBHelper db;
+public class DBScoreTest {
+    DBScore db;
     
-    public DBHelperTest() {
+    public DBScoreTest() {
     }
     
     @Before
     public void setUp() {
         String dbUrl = "jdbc:sqlite:" + System.getProperty("user.dir") + System.getProperty("file.separator") + "test.db";
-        db = new DBHelper(dbUrl, "Easy", "Medium");
+        db = new DBScore(dbUrl, "Easy", "Medium");
         db.connect();
     }
   
     @Test
     public void creatingTableWorks() {
         db.init("Test1", "Test2");
-        ResultSet rs = db.getResultSet("SELECT * FROM Test1");
+        ResultSet rs = db.select("SELECT * FROM Test1");
         assertTrue(rs != null);
         
     }
     @Test
     public void updatingDatabaseWorks() throws SQLException {
         db.update("INSERT INTO Medium (id,name,time) VALUES (?,?,?)", 1, "rs", "00:10");
-        assertEquals("rs", db.getResultSet("SELECT * FROM Medium").getString(2));
+        assertEquals("rs", db.select("SELECT * FROM Medium").getString(2));
     }
     @Test
     public void getResultSetreturnsResultSet() {
-        ResultSet rs = db.getResultSet("SELECT * FROM Easy");
+        ResultSet rs = db.select("SELECT * FROM Easy");
         assertTrue(rs instanceof ResultSet);
     }
     

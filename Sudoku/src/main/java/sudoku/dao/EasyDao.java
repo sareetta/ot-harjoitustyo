@@ -15,7 +15,7 @@ import sudoku.domain.SudokuScore;
  */
 public class EasyDao implements SQLDao {
     private List<SudokuScore> scores;
-    private DBHelper db;
+    private DBScore db;
     
     /**
      * Constructor.
@@ -24,11 +24,11 @@ public class EasyDao implements SQLDao {
      * @param db             The database.
      * @throws SQLException  If exception occurs. 
      */
-    public EasyDao(DBHelper db) throws SQLException {
+    public EasyDao(DBScore db) throws SQLException {
         scores = new ArrayList<>();
         this.db = db;
         db.connect();
-        ResultSet rs = db.getResultSet("SELECT * FROM Easy");
+        ResultSet rs = db.select("SELECT * FROM Easy");
         if (rs == null) {
             return;
         }

@@ -10,8 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -24,7 +22,7 @@ import sudoku.domain.SudokuScore;
  * @author sareetta
  */
 public class EasyDaoTest {
-    DBHelper db;
+    DBScore db;
     EasyDao easy;
     
     public EasyDaoTest() throws SQLException {
@@ -34,7 +32,7 @@ public class EasyDaoTest {
     @Before
     public void setUp() {
         String dbUrl = "jdbc:sqlite:" + System.getProperty("user.dir") + System.getProperty("file.separator") + "test.db";
-        db = new DBHelper(dbUrl, "Easy", "Medium");
+        db = new DBScore(dbUrl, "Easy", "Medium");
         try {
             easy = new EasyDao(db);
         } catch (SQLException e) {
@@ -51,7 +49,7 @@ public class EasyDaoTest {
             assert false;
         }
         db.connect();
-        ResultSet rs = db.getResultSet("SELECT * FROM Easy");
+        ResultSet rs = db.select("SELECT * FROM Easy");
         if (rs == null) assert false;
         try {
             assertTrue(rs.getString("name").equals("rs"));

@@ -22,7 +22,7 @@ import sudoku.domain.SudokuScore;
  * @author sareetta
  */
 public class MediumDaoTest {
-    DBHelper db;
+    DBScore db;
     MediumDao medium;
     
     public MediumDaoTest() {
@@ -32,7 +32,7 @@ public class MediumDaoTest {
     @Before
     public void setUp() {
         String dbUrl = "jdbc:sqlite:" + System.getProperty("user.dir") + System.getProperty("file.separator") + "test.db";
-        db = new DBHelper(dbUrl, "Easy", "Medium");
+        db = new DBScore(dbUrl, "Easy", "Medium");
         try {
             medium = new MediumDao(db);
         } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class MediumDaoTest {
             assert false;
         }
         db.connect();
-        ResultSet rs = db.getResultSet("SELECT * FROM Medium");
+        ResultSet rs = db.select("SELECT * FROM Medium");
         if (rs == null) assert false;
         try {
             assertTrue(rs.getString("name").equals("rs"));

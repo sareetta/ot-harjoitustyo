@@ -16,7 +16,7 @@ import sudoku.domain.SudokuScore;
  */
 public class MediumDao implements SQLDao {
     public List<SudokuScore> scores;
-    private DBHelper db;
+    private DBScore db;
     
     /**
      * Constructor.
@@ -24,11 +24,11 @@ public class MediumDao implements SQLDao {
      * @param db             The database.
      * @throws SQLException  If exception occurs.
      */
-    public MediumDao(DBHelper db) throws SQLException {
+    public MediumDao(DBScore db) throws SQLException {
         scores = new ArrayList<>();
         this.db = db;
         db.connect();
-        ResultSet rs = db.getResultSet("SELECT * FROM Medium");
+        ResultSet rs = db.select("SELECT * FROM Medium");
         if (rs == null) {
             return;
         }

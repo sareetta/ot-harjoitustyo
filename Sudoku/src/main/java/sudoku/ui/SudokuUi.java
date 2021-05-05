@@ -25,7 +25,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import sudoku.dao.EasyDao;
-import sudoku.dao.DBHelper;
+import sudoku.dao.DBScore;
 import sudoku.dao.MediumDao;
 import sudoku.domain.SudokuGame;
 import sudoku.domain.SudokuScore;
@@ -53,7 +53,7 @@ public class SudokuUi extends Application {
         String fs = System.getProperty("file.separator");
         String dbUrl = "jdbc:sqlite:" + ud + fs + sudokuDB;
 
-        DBHelper db = new DBHelper(dbUrl, easyTable, mediumTable);
+        DBScore db = new DBScore(dbUrl, easyTable, mediumTable);
         easyDao = new EasyDao(db);
         mediumDao = new MediumDao(db);
     }
