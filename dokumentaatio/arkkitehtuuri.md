@@ -80,10 +80,6 @@ Sudokun generoimisen ja tarkistamisen lisäksi tärkeimmät toiminnot ovat varma
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
-Käyttöliittymä
-
-Käyttöliittymästä on pyritty eriyttämään sovelluslogiikka. Sudokun tarkastamiseen koodia on vähän myös käyttöliittymässä. Käyttöliittymän koodia on myös haastava ymmärtää ja seurata, koska suurin osa koodista on yhdessä start-metodissa ja se on todella pitkä. Eri näkymät olisi voinut eriyttää omiin metodeihinsa, jolloin olisi saanut selkeämmän luokan.
-
 Sovelluslogiikka
 
 Sudoku-luokka on luokkana aika iso, ja siinä on yksi metodi, joka on yli 20 riviä. Metodi generateSudoku on suositeltua pidempi. Metodi käyttää rekursiota Sudokun täyttämiseen enkä tiedä miten sitä voisi lyhentää. Sudoku-luokka jäi pitkäksi, koska kaikki siinä olevat metodit liittyvät sudokuun ja sen ylläpitoon. Sudokun generoimiseen ja tarkistukseen tarvitsee useita metodeja, joten pituutta tuli siitä.
