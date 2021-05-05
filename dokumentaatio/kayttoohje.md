@@ -39,5 +39,3 @@ Tiedon pysyväistallennukseen käytetään tietokantaa, joka tallentuu scores.db
 Jos kyseisen tietokannan poistaa, niin tiedot menetetään lopullisesti. Tällöin vanhoja ennätyksiä ei voi enää katsoa. 
 Jos haluaa poistaa ennätykset, niin tämä onnistuu poistamalla kyseisen tiedoston. Tällöin käynnistyksen yhteydessä sovellus luo uuden tietokannan.
 
-Tietokanta luodaan Linux-järjestelmissä samaan hakemistoon sovelluksen jar-tiedoston kanssa.
-Windows-järjestelmissä tietokanta luodaan käyttäjän oman päähakemiston alle.
