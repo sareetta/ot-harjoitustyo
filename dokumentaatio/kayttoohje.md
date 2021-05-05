@@ -1,5 +1,6 @@
 # Käyttöohje
 Lataa tiedosto Sudoku.jar
+
 Tiedoston pystyy ajamaan esimerkiksi kotihakemistosta.
 
 ## Konfigurointi
