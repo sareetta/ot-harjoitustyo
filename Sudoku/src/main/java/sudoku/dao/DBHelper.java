@@ -28,7 +28,7 @@ public class DBHelper {
     public DBHelper(String dbUrl, String easyTable, String mediumTable) {
         this.dbUrl = dbUrl;
         connect();
-        create(easyTable, mediumTable);
+        init(easyTable, mediumTable);
         close();
     }
 
@@ -47,23 +47,6 @@ public class DBHelper {
             System.out.println("Exception in connect: " + e);
         }
     }
-
-    /**
-     * Method closes connection to the database.
-     */
-    public void close() {
-        try {
-            db.close();
-            if (ps != null) {
-                ps.close();
-            }
-            if (rs != null) {
-                rs.close();
-            }
-        } catch (SQLException e) {
-            System.out.println("Exception in close: " + e);;
-        }
-    }
    
     /**
      * Method creates the tables in the database if they don't exist.
@@ -71,7 +54,7 @@ public class DBHelper {
      * @param easyTable    The table foe easy scores.
      * @param mediumTable  The table for medium scores.
      */
-    public void create(String easyTable, String mediumTable) {
+    public void init(String easyTable, String mediumTable) {
         try {
             Statement s = db.createStatement();
             String tableString = "CREATE TABLE IF NOT EXISTS " + easyTable + " (id SERIAL, name STRING, time, STRING);";
@@ -118,6 +101,23 @@ public class DBHelper {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Exception in update: " + e);
+        }
+    }
+    
+    /**
+     * Method closes connection to the database.
+     */
+    public void close() {
+        try {
+            db.close();
+            if (ps != null) {
+                ps.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception in close: " + e);;
         }
     }
     

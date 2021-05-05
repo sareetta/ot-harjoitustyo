@@ -35,7 +35,7 @@ public class DBHelperTest {
   
     @Test
     public void creatingTableWorks() {
-        db.create("Test1", "Test2");
+        db.init("Test1", "Test2");
         ResultSet rs = db.getResultSet("SELECT * FROM Test1");
         assertTrue(rs != null);
         
