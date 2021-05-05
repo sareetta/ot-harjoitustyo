@@ -18,13 +18,16 @@ public interface SQLDao {
      * Method for saving a score.
      * 
      * @param score         The score to be saved.
+     * @param tableName     The table from database.
      * @throws SQLException If exception occurs.
      */
-    void save(SudokuScore score) throws SQLException;
+    void save(SudokuScore score, String tableName) throws SQLException;
 
     /**
      * Method for getting the list of the scores.
-     * @return List of the scores.
+     * @param tableName     The table from the database.
+     * @return              List of the scores.
+     * @throws SQLException If exception occurs.
      */
-    List<SudokuScore> list();
+    List<SudokuScore> list(String tableName) throws SQLException;
 }

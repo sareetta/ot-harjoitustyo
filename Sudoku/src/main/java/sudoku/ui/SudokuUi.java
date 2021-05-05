@@ -7,6 +7,7 @@ package sudoku.ui;
 
 import java.io.FileInputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import javafx.application.Application;
@@ -24,9 +25,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import sudoku.dao.EasyDao;
 import sudoku.dao.DBScore;
-import sudoku.dao.MediumDao;
+import sudoku.dao.ScoreDao;
 import sudoku.domain.SudokuGame;
 import sudoku.domain.SudokuScore;
 
@@ -37,8 +37,8 @@ import sudoku.domain.SudokuScore;
 public class SudokuUi extends Application {
     SudokuGame sudoku;
     SudokuDisplay sudokuDisplay;
-    MediumDao mediumDao;
-    EasyDao easyDao;
+    ScoreDao easyDao;
+    ScoreDao mediumDao;
     Timer time;
     
     @Override
@@ -54,8 +54,9 @@ public class SudokuUi extends Application {
         String dbUrl = "jdbc:sqlite:" + ud + fs + sudokuDB;
 
         DBScore db = new DBScore(dbUrl, easyTable, mediumTable);
-        easyDao = new EasyDao(db);
-        mediumDao = new MediumDao(db);
+        easyDao = new ScoreDao(db, "Easy");
+        mediumDao = new ScoreDao(db, "Medium");
+        
     }
     
     @Override
@@ -350,13 +351,13 @@ public class SudokuUi extends Application {
                 
                 if (sudoku.getDifficulty() == 35) {
                     try {
-                        mediumDao.save(new SudokuScore(0, nameArea.getText(), time.Time()));
+                        mediumDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Medium");
                     } catch (SQLException e) {
                         System.out.println("Exception in saving: " + e);
                     }
                 } else if (sudoku.getDifficulty() == 25) {
                     try {
-                        easyDao.save(new SudokuScore(0, nameArea.getText(), time.Time()));
+                        easyDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
                     } catch (SQLException e) {
                         System.out.println("Exception in saving: " + e);
                     }
@@ -377,8 +378,18 @@ public class SudokuUi extends Application {
             easyScoresList.getChildren().clear();
             mediumScoresList.getChildren().add(mediumTitle);
             easyScoresList.getChildren().add(easyTitle);
-            List<SudokuScore> scoresMedium = mediumDao.list();
-            List<SudokuScore> scoresEasy = easyDao.list();
+            List<SudokuScore> scoresMedium = new ArrayList<>();
+            try {
+                scoresMedium = mediumDao.list("Medium");
+            } catch (SQLException e) {
+                System.out.println("Exception in listing: " + e);
+            }
+            List<SudokuScore> scoresEasy = new ArrayList<>();
+            try {
+                scoresEasy = easyDao.list("Easy");
+            } catch (SQLException e) {
+                System.out.println("Exception in listing: " + e);
+            }
             
             if (scoresMedium.isEmpty()) {
                 Label noScores = new Label("No scores!");

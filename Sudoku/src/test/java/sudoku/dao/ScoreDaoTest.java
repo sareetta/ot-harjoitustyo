@@ -21,11 +21,11 @@ import sudoku.domain.SudokuScore;
  *
  * @author sareetta
  */
-public class EasyDaoTest {
+public class ScoreDaoTest {
     DBScore db;
-    EasyDao easy;
+    ScoreDao score;
     
-    public EasyDaoTest() throws SQLException {
+    public ScoreDaoTest() throws SQLException {
     }
     
  
@@ -34,7 +34,7 @@ public class EasyDaoTest {
         String dbUrl = "jdbc:sqlite:" + System.getProperty("user.dir") + System.getProperty("file.separator") + "test.db";
         db = new DBScore(dbUrl, "Easy", "Medium");
         try {
-            easy = new EasyDao(db);
+            score = new ScoreDao(db, "Easy");
         } catch (SQLException e) {
             assert false;
         }
@@ -44,7 +44,7 @@ public class EasyDaoTest {
     @Test
     public void methodSaveWorks() {
         try {
-            easy.save(new SudokuScore(1,"rs","00:10"));
+            score.save(new SudokuScore(1,"rs","00:10"), "Easy");
         } catch (SQLException e) {
             assert false;
         }
@@ -57,14 +57,15 @@ public class EasyDaoTest {
             assert false;
         }
     }
+    
     @Test 
-    public void methodListWorks() {
+    public void methodListWorks() throws SQLException {
         try {
-            easy.save(new SudokuScore(1,"rs","00:10"));
+            score.save(new SudokuScore(1,"rs","00:10"), "Easy");
         } catch (SQLException e) {
             assert false;
         }
-        assertTrue(easy.list().get(0).getName().equals("rs"));
+        assertTrue(score.list("Easy").get(0).getName().equals("rs"));
         
     }
     
