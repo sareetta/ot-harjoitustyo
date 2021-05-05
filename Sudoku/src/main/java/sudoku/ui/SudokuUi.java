@@ -364,11 +364,11 @@ public class SudokuUi extends Application {
                 
                 nameArea.setText("");
                 name.setText("Add your username above.");
+                stage.setScene(menuScene); 
             } else {
                 nameArea.setText("Your name needs to be 1 - 15 characters!");
             }
             
-            stage.setScene(menuScene); 
             });
                 
         
