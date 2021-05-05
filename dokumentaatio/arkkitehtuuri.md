@@ -23,7 +23,7 @@ jokainen näistä on toteutettu omana Scene-oliona. Näkymistä yksi kerrallaan 
 
 Valikko-näkymä avautuu sovelluksen käynnistyessä. Siitä pystyy valitsemaan pelaamisen, ennätyksien katselun tai poistumisen. Ennätysnäkymässä näkee molempien vaikeusluokkien top-10 listan. Tästä näkymästä pääsee takaisin päävalikkoon. Jos valitsee päävalikosta pelaamisen, avautuu näkyy vaikeustason valintaan, jotka ovat _easy_ ja _medium_. Tästäkin näkymästä pääsee takaisin päävalikkoon. Kun on valinnut vaikeustason, niin avautuu pelinäkymä. Tässä näkymässä itse Sudokua voi pelata. Näkymästä voi sulkea pelin, jolloin avautuu ikkuna, joka varmistaa haluaako pelaaja poistua. Muita vaihtoehtoja pelinäkymässä on palata vaikeustason valintanäkymään, tarkistaa Sudoku ja uuden sudokun luominen.
 
-Käyttöliittymä on eriytetty sovelluslogiikasta ja se kutsuu luokan SudokuGame metodeja oliolla _sudoku_. Käyttöliittymässä myös käytetään SudokuScore -oliota, joka on tulossolio. Se viedään EasyDao- ja MediumDao-olioita käyttäen tietokantaan. Dao -olioita tarvitaan tulosten tallentamiseen.
+Käyttöliittymä on eriytetty sovelluslogiikasta ja se kutsuu luokan SudokuGame metodeja oliolla _sudoku_. Käyttöliittymässä myös käytetään SudokuScore -oliota, joka on tulossolio. Se viedään ScoreDao -oliota käyttäen tietokantaan. Dao -oliota tarvitaan tulosten tallentamiseen.
 
 ## Sovelluslogiikka
 
@@ -46,14 +46,14 @@ Toiminnallisista kokonaisuuksista vastaa luokka SudokuGame. Luokka tarjoaa kaiki
 * boolean checkSudoku()
 * int[][] copy(int[][] sudoku)
 
-SudokuScore-luokalla on yhteys molempiin käyttöliittymässä käytössä oleviin DAO-olioihin EasyDao ja MediumDao, koska DAO:n kautta tietokantaan tallennetaan tuloksia SudokuScore-olioiden tietojen perusteella. Tiedot tuodaan tietokannasta niin, että luodaan niitä vastaavat SudokuScore-oliot.
+SudokuScore-luokalla on yhteys käyttöliittymässä käytössä olevaan DAO-olioon ScoreDao, koska DAO:n kautta tietokantaan tallennetaan tuloksia SudokuScore-olioiden tietojen perusteella. Tiedot tuodaan tietokannasta niin, että luodaan niitä vastaavat SudokuScore-oliot.
 
 Käyttöliittymän, sovelluslogiikan ja tiedon pysyväistallennuksen luokkien välisiä suhteita kuvaava luokka-/pakkauskaavio:
 
 ![Sudoku_package_class_diagram (1)](https://user-images.githubusercontent.com/81009944/116818453-24fc4280-ab74-11eb-8a04-2145f1a8c939.png)
 
 ## Tietojen pysyväistallennus
-Pakkauksen sudoku.dao luokkien EasyDao ja NormalDao kautta tehdään pelitulosten pitkäaikaistallennus tietokantaan. Itse tallennuksen hoitaa luokka DBScore. Tämä luokka on vastuussa tietokannan ylläpidsta ja muokkaamisesta. EasyDao:n kautta tallennetaan omaan tauluunsa helpon vaikeusasteen Sudokuihin liittyviä tuloksia ja MediumDao puolestaan normaalin vaikeusasteen tuloksia. 
+Pakkauksen sudoku.dao luokan ScoreDao kautta tehdään pelitulosten pitkäaikaistallennus tietokantaan. Itse tallennuksen hoitaa luokka DBScore. Tämä luokka on vastuussa tietokannan ylläpidsta ja muokkaamisesta. ScoreDaon:n kautta hoidetaan molempien vaikeutasojen tulosten tallennus tietokantaan.
 
 DAO-luokissa on myötäilty normaalia Data Access Object -mallia. Niissä on metodit rivien lisäämiseen tietokantatauluun ja taulun kaikkien rivien listaamiseen järjestyksessä suoritusajan mukaan. Luokat käyttävät rajapintaa SQLDao.
 
