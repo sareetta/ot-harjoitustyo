@@ -8,7 +8,7 @@ package sudoku.domain;
 import java.util.*;
 
 /**
- * Class for application logic
+ * Class for application logic.
  *
  * @author sareetta
  */

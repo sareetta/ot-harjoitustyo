@@ -24,9 +24,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import sudoku.dao.DBEasyDao;
+import sudoku.dao.EasyDao;
 import sudoku.dao.DBHelper;
-import sudoku.dao.DBMediumDao;
+import sudoku.dao.MediumDao;
 import sudoku.domain.SudokuGame;
 import sudoku.domain.SudokuScore;
 
@@ -37,8 +37,8 @@ import sudoku.domain.SudokuScore;
 public class SudokuUi extends Application {
     SudokuGame sudoku;
     SudokuDisplay sudokuDisplay;
-    DBMediumDao mediumDao;
-    DBEasyDao easyDao;
+    MediumDao mediumDao;
+    EasyDao easyDao;
     Timer time;
     
     @Override
@@ -54,8 +54,8 @@ public class SudokuUi extends Application {
         String dbUrl = "jdbc:sqlite:" + ud + fs + sudokuDB;
 
         DBHelper db = new DBHelper(dbUrl, easyTable, mediumTable);
-        easyDao = new DBEasyDao(db);
-        mediumDao = new DBMediumDao(db);
+        easyDao = new EasyDao(db);
+        mediumDao = new MediumDao(db);
     }
     
     @Override

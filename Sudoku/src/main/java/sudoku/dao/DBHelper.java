@@ -8,22 +8,33 @@ package sudoku.dao;
 import java.sql.*;
 
 /**
- *
+ * Class for handling the database.
+ * 
  * @author sareetta
  */
 public class DBHelper {
-    private Connection db;
     private String dbUrl;
+    private Connection db;
     private PreparedStatement ps;
     private ResultSet rs;
 
+    /**
+     * Constructor. 
+     * Sets the database address and calls method create.
+     * @param dbUrl
+     * @param easyTable
+     * @param mediumTable 
+     */
     public DBHelper(String dbUrl, String easyTable, String mediumTable) {
         this.dbUrl = dbUrl;
         connect();
-        createTables(easyTable, mediumTable);
+        create(easyTable, mediumTable);
         close();
     }
 
+    /**
+     * Method connects to the database.
+     */
     public void connect() {
         try {
             if (db == null) {
@@ -37,6 +48,9 @@ public class DBHelper {
         }
     }
 
+    /**
+     * Method closes connection to the database.
+     */
     public void close() {
         try {
             db.close();
@@ -47,11 +61,17 @@ public class DBHelper {
                 rs.close();
             }
         } catch (SQLException e) {
-            System.out.println("Exception in disconnect: " + e);;
+            System.out.println("Exception in close: " + e);;
         }
     }
-
-    private void createTables(String easyTable, String mediumTable) {
+   
+    /**
+     * Method creates the tables in the database if they don't exist.
+     * 
+     * @param easyTable    The table foe easy scores.
+     * @param mediumTable  The table for medium scores.
+     */
+    public void create(String easyTable, String mediumTable) {
         try {
             Statement s = db.createStatement();
             String tableString = "CREATE TABLE IF NOT EXISTS " + easyTable + " (id SERIAL, name STRING, time, STRING);";
@@ -60,10 +80,16 @@ public class DBHelper {
             s.execute(tableString);
             s.close();
         } catch (SQLException e) {
-            System.out.println("Exception in createTables: " + e);
+            System.out.println("Exception in create: " + e);
         }
     }
 
+    /**
+     * Method for ResultSet.
+     * 
+     * @param statement Statement object.
+     * @return  returns the ResultSet.
+     */
     public ResultSet getResultSet(String statement) {
         rs = null;
         try {
@@ -75,6 +101,14 @@ public class DBHelper {
         return rs;
     }
     
+    /**
+     * Method updates the database.
+     * 
+     * @param statement Wanted statement.
+     * @param value1    First variable is the id.
+     * @param value2    Second variable is the name.
+     * @param value3    Third variable is the time.
+     */
     public void update(String statement, int value1, String value2, String value3) {
         try {
             ps = db.prepareStatement(statement);

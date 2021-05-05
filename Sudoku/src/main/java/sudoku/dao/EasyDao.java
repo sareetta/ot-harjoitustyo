@@ -10,14 +10,21 @@ import java.util.*;
 import sudoku.domain.SudokuScore;
 
 /**
- *
+ * Class for handling the Easy table in the database.
  * @author sareetta
  */
-public class DBEasyDao implements SQLDao{
+public class EasyDao implements SQLDao{
     private List<SudokuScore> scores;
     private DBHelper db;
     
-    public DBEasyDao(DBHelper db) throws SQLException {
+    /**
+     * Constructor.
+     * Finds easy scores from the database.
+     * 
+     * @param db             The database.
+     * @throws SQLException  If exception occurs. 
+     */
+    public EasyDao(DBHelper db) throws SQLException {
         scores = new ArrayList<>();
         this.db = db;
         db.connect();
@@ -28,6 +35,13 @@ public class DBEasyDao implements SQLDao{
         db.close();
     }
     
+    /**
+     * Method for saving new scores to the database.
+     * 
+     * @param score The score to be added to the database.
+     * @throws SQLException If exception occurs.
+     */
+    @Override
     public void save(SudokuScore score) throws SQLException {
         db.connect();
         db.update("INSERT INTO Easy (id,name,time) VALUES (?,?,?)", score.getId(),
@@ -36,6 +50,11 @@ public class DBEasyDao implements SQLDao{
         scores.add(score);
     }
 
+    /**
+     * Method for getting the list of the scores.
+     * 
+     * @return List of the scores.
+     */
     @Override
     public List<SudokuScore> list() {
         return scores;
