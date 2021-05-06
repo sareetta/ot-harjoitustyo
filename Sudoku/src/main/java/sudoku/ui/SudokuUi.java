@@ -54,8 +54,8 @@ public class SudokuUi extends Application {
         String dbUrl = "jdbc:sqlite:" + ud + fs + sudokuDB;
 
         DBScore db = new DBScore(dbUrl, easyTable, mediumTable);
-        easyDao = new ScoreDao(db, "Easy");
-        mediumDao = new ScoreDao(db, "Medium");
+        easyDao = new ScoreDao(db, easyTable);
+        mediumDao = new ScoreDao(db, mediumTable);
         
     }
     
