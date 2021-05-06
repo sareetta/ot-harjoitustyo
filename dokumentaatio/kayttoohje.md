@@ -1,7 +1,7 @@
 # Käyttöohje
 Lataa tiedosto Sudoku.jar
 
-Tiedoston pystyy ajamaan esimerkiksi kotihakemistosta.
+Ohjelman pystyy ajamaan esimerkiksi kotihakemistosta.
 
 ## Konfigurointi
 Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, joka määrittelee pelituloksien tietokannan nimen sekä taulujen nimet. 
