@@ -50,7 +50,7 @@ SudokuScore-luokalla on yhteys käyttöliittymässä käytössä olevaan DAO-oli
 
 Käyttöliittymän, sovelluslogiikan ja tiedon pysyväistallennuksen luokkien välisiä suhteita kuvaava luokka-/pakkauskaavio:
 
-![Sudoku_package_class_diagram (1)](https://user-images.githubusercontent.com/81009944/116818453-24fc4280-ab74-11eb-8a04-2145f1a8c939.png)
+![Sudoku_package_class_diagram (1)](https://user-images.githubusercontent.com/81009944/117265490-f70d4b80-ae5c-11eb-8f47-fdb0d6319d88.png)
 
 ## Tietojen pysyväistallennus
 Pakkauksen sudoku.dao luokan ScoreDao kautta tehdään pelitulosten pitkäaikaistallennus tietokantaan. Itse tallennuksen hoitaa luokka DBScore. Tämä luokka on vastuussa tietokannan ylläpidsta ja muokkaamisesta. ScoreDaon:n kautta hoidetaan molempien vaikeutasojen tulosten tallennus tietokantaan.
