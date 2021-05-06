@@ -63,12 +63,12 @@ public class DBScore {
             s.execute(newTable);
             s.close();
         } catch (SQLException e) {
-            System.out.println("Exception in create: " + e);
+            System.out.println("Exception in init: " + e);
         }
     }
 
     /**
-     * Method to get the ResultSet to point to the right table.
+     * Method to get the ResultSet to point to the right place.
      * 
      * @param statement Statement object.
      * @return  returns the ResultSet.
