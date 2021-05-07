@@ -5,11 +5,13 @@
 
 [Vaatimusmäärittely](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmäärittely.md)
 
-[Tuntikirjanpito](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+[Käyttöohje](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 [Arkkitehtuurikuvaus](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
-[Käyttöohje](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+[Testausdokumentti](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/testausdokumentti.md)
+
+[Tuntikirjanpito](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ## Releaset
 [Viikko 5](https://github.com/sareetta/ot-harjoitustyo/releases)
