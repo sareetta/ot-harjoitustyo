@@ -49,8 +49,7 @@ public class ScoreDao implements SQLDao {
         db.connect();
         String strQuery = "INSERT INTO $tableName (id,name,time) VALUES (?,?,?)";
         String query = strQuery.replace("$tableName", tableName);
-        db.update(query, score.getId(),
-                score.getName(), score.getTime());
+        db.update(query, score.getId(), score.getName(), score.getTime());
         db.close();
     }
 
@@ -64,14 +63,13 @@ public class ScoreDao implements SQLDao {
     @Override
     public List<SudokuScore> list(String tableName) throws SQLException {
         db.connect();
-            String strQuery = "SELECT * FROM $tableName"
-                  + " ORDER BY time ASC;";
-            String query = strQuery.replace("$tableName", tableName);
-            ResultSet rs = db.select(query);
+        String strQuery = "SELECT * FROM $tableName ORDER BY time ASC;";
+        String query = strQuery.replace("$tableName", tableName);
+        ResultSet rs = db.select(query);
     
-            while (rs.next()) {
-                    scores.add(new SudokuScore(rs.getInt("id"), rs.getString("name"), rs.getString("time")));
-                } 
+        while (rs.next()) {
+            scores.add(new SudokuScore(rs.getInt("id"), rs.getString("name"), rs.getString("time")));
+        } 
         db.close();
         
         return scores;
