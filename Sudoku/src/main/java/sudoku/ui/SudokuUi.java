@@ -31,7 +31,8 @@ import sudoku.domain.SudokuGame;
 import sudoku.domain.SudokuScore;
 
 /**
- *
+ * Class for user interface.
+ * 
  * @author sareetta
  */
 public class SudokuUi extends Application {
@@ -41,6 +42,11 @@ public class SudokuUi extends Application {
     ScoreDao mediumDao;
     Timer time;
     
+    /**
+     * Database initialization.
+     * 
+     * @throws Exception If exception occurs.
+     */
     @Override
     public void init() throws Exception {
         Properties properties = new Properties();
@@ -59,6 +65,11 @@ public class SudokuUi extends Application {
         
     }
     
+    /**
+     * Most of the code for user interface.
+     * @param stage       The application window.
+     * @throws Exception  If exception occurs.
+     */
     @Override
     public void start(Stage stage) throws Exception {
         sudoku = new SudokuGame();
@@ -458,6 +469,10 @@ public class SudokuUi extends Application {
         
     }
 
+    /**
+     * Method for launching the application.
+     * @param args 
+     */
     public static void main(String[] args) {
         launch();
     }

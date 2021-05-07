@@ -14,16 +14,27 @@ import javafx.scene.text.TextAlignment;
 import sudoku.domain.SudokuGame;
 
 /**
- *
+ * Class for handling the Sudoku -board.
+ * 
  * @author sareetta
  */
 public class SudokuDisplay {
    public TextArea[][] board;
     
+   /**
+    * Constructor.
+    * Initializes the board.
+    */
     public SudokuDisplay() {
         board = new TextArea[9][9];
     }
     
+    /**
+     * Method takes care of the Sudoku -board (empty and number cells)
+     * 
+     * @param sudoku       The Sudoku game.
+     * @param sudokuBoard  The board to make.
+     */
     public void showSudoku(SudokuGame sudoku, GridPane sudokuBoard) {
         for (int i = 1; i <= 9; i++) {
             for (int j = 1; j <= 9; j++) {

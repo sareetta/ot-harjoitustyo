@@ -14,7 +14,8 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 /**
- *
+ * Class for the timer in the game.
+ * 
  * @author sareetta
  */
 public class Timer {
@@ -23,6 +24,10 @@ public class Timer {
     private long minutes;
     private Label time;
 
+    /**
+     * Constructor.
+     * Initializes the parameters of the timer an the label.
+     */
     public Timer() {
         this.timeline = new Timeline();
         this.seconds = 0;
@@ -33,15 +38,21 @@ public class Timer {
         init();
     }
 
+    /**
+     * Method for initializing the timer.
+     */
     private void init() {
         timeline = new Timeline(
-                new KeyFrame(Duration.seconds(0),
-                        e -> increaseTime()),
-                new KeyFrame(Duration.seconds(1)));
+            new KeyFrame(Duration.seconds(0),
+                e -> increaseTime()),
+            new KeyFrame(Duration.seconds(1)));
 
         timeline.setCycleCount(Animation.INDEFINITE);
     }
 
+    /**
+     * Method for increase the time.
+     */
     private void increaseTime() {
         if (seconds < 59) {
             seconds++;
@@ -60,32 +71,58 @@ public class Timer {
         }
     }
 
+    /**
+     * Method for starting the timer.
+     */
     public void start() {
         reset();
         timeline.play();
     }
     
+    /**
+     * Method for stopping the timer.
+     */
     public void stop() {
         timeline.stop();
     }
 
+    /**
+     * Method for resetting the timer.
+     */
     public void reset() {
         this.seconds = 0;
         this.minutes = 0;
     }
     
+    /**
+     * Method to continue the timer.
+     */
     public void replay() {
         timeline.play();
     }
 
+    /**
+     * Method for getting the timer.
+     * 
+     * @return Label.
+     */
     public Label getTime() {
         return this.time;
     }
     
+    /**
+     * Method for getting the time for a score.
+     * 
+     * @return Time.
+     */
     public String Time() {
         return time.getText();
     }
     
+    /**
+     * Method for getting the time for correct Sudoku solution announcement.
+     * @return Message.
+     */
     public String toString() {
         return "Time used: " + time.getText();
     }
