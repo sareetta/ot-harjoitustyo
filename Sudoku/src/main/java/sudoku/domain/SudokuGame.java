@@ -251,17 +251,4 @@ public class SudokuGame {
         return this.sudoku;
     }
     
-    /**
-     * Method prints the Sudoku.
-     * Used for testing.
-     */
-    public void print() {
-        System.out.println();
-        for (int column = 0; column < 9; column++) {
-            for (int row = 0; row < 9; row++) {
-                System.out.print(" " + sudoku[row][column]);
-                System.out.println();
-            }
-        }
-    }   
 }
