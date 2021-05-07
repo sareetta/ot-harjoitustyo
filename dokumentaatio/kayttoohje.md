@@ -11,6 +11,7 @@ Tiedoston muoto on seuraava:
 sudokuDB=scores.db
 easyTable=Easy
 mediumTable=Medium
+hardTable=Hard
 ```
 
 ## Ohjelman käynnistäminen
@@ -20,8 +21,8 @@ Ohjelman voi käynnistää komennolla:
 java -jar Sudoku.jar
 ```
 ## Sudokun pelaaminen
-Ohjelman käynnistyttyä avautuu alkuvalikko. Sudokun pelaaminen aloitetaan painamalla nappia Play. Tämän jälkeen avautuu näkymä, jossa valitaan vaikeustaso.
-Vaikeustasojen ero on, että helpossa sudokussa pelaajan täytettäväksi on jätetty vähemmän ruutuja kuin keskivaikeassa pelissä.
+Ohjelman käynnistyttyä avautuu alkuvalikko. Sudokun pelaaminen aloitetaan painamalla nappia Play. Tämän jälkeen avautuu näkymä, jossa valitaan vaikeustaso kolmesta vaihtoehdosta (helppo, keskitaso, vaikea).
+Vaikeustasojen ero on, että tyhjien ruutujen määrä on suurempi vaikeammilla tasoilla.
 
 Kun ohjelma on ohjannut käyttäjän pelinäkymään, pelaaminen tapahtuu täyttämällä ikkunassa olevaan sudokuruudukkoon numeroita klikkaamalla tyhjää ruutua.
 Jokaisella rivillä, sarakkeessa ja 3x3 -ruudukossa numerot 1-9 saa esiintyä vain kerran. Kun ruudukkoon täytetyn ratkaisun haluaa tarkistaa, painetaan Check -nappia.
@@ -33,7 +34,7 @@ kysytään haluaako käyttäjä varmasti poistu, koska poistuminen aiheuttaa pel
 
 ## Ennätyksien katselu
 Käyttäjän parhaiden tulosten katselu onnistuu painamalla alkuvalikossa Statistics -nappia. 
-Nappi avaa ennätysnäkymän, jossa on vasemmalla listattuna top-10 suoritukset normaalilla vaikeustasolla ja oikealla helpolla vaikeustasolla. 
+Nappi avaa ennätysnäkymän, jossa on vasemmalla listattuna top-10 suoritukset kaikilta vaikeustasoilta.
 Halutessaan käyttäjä voi palata takaisin alkuvalikkoon painamalla vasemmassa alakulmassa olevaa Return to menu -nappia.
 
 ## Huomioita
