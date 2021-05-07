@@ -24,6 +24,8 @@ Testitietokannan avulla testataan varsinaisen tietokannan toimintaa testaamalla 
 ## Testikattavuus
 Käyttöliittymää lukuunottamatta sovelluksen testauksen rivikattavuus on 94% ja haarautumakattavuus 98%.
 
+![Jacoco-report Sudoku](https://user-images.githubusercontent.com/81009944/117439964-2941aa80-af3c-11eb-89ba-862073974824.png)
+
 Testaamatta on muutamia settereitä ja gettereitä sekä DAO-puolella testaamattomat tilanteet ovat sellaiset, joissa käsitellään SQLException.
 
 ## Järejestelmätestaus
