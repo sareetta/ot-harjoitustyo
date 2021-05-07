@@ -35,7 +35,7 @@
                 <configuration>
                     <excludes>
                         <exclude>sudoku/ui/**/*</exclude>
-                        <exclude>sudoku/Main</exclude>
+                        <exclude>sudoku.Main</exclude>
                     </excludes>
                 </configuration>
                 <executions>
