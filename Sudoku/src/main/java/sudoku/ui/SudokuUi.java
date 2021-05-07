@@ -301,7 +301,7 @@ public class SudokuUi extends Application {
         TextArea nameArea = new TextArea("");
         nameArea.setMaxSize(300, 60);
         nameArea.setMinSize(300, 60);
-        Label name = new Label("Add username above.");
+        Label name = new Label("Enter your username.");
         name.setFont(Font.font("Lucida Sans Unicode", 20));
         name.setMaxWidth(300);
         name.setMinWidth(300);
