@@ -32,7 +32,7 @@ public class ScoreDaoTest {
     @Before
     public void setUp() {
         String dbUrl = "jdbc:sqlite:" + System.getProperty("user.dir") + System.getProperty("file.separator") + "test.db";
-        db = new DBScore(dbUrl, "Easy", "Medium");
+        db = new DBScore(dbUrl, "Easy", "Medium", "Hard");
         try {
             score = new ScoreDao(db, "Easy");
         } catch (SQLException e) {

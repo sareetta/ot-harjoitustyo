@@ -29,13 +29,13 @@ public class DBScoreTest {
     @Before
     public void setUp() {
         String dbUrl = "jdbc:sqlite:" + System.getProperty("user.dir") + System.getProperty("file.separator") + "test.db";
-        db = new DBScore(dbUrl, "Easy", "Medium");
+        db = new DBScore(dbUrl, "Easy", "Medium", "Hard");
         db.connect();
     }
   
     @Test
     public void creatingTableWorks() {
-        db.init("Test1", "Test2");
+        db.init("Test1", "Test2", "Test3");
         ResultSet rs = db.select("SELECT * FROM Test1");
         assertTrue(rs != null);
         

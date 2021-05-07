@@ -25,10 +25,10 @@ public class DBScore {
      * @param easyTable   The name of first table.
      * @param mediumTable The name of the second table.
      */
-    public DBScore(String dbUrl, String easyTable, String mediumTable) {
+    public DBScore(String dbUrl, String easyTable, String mediumTable, String hardTable) {
         this.dbUrl = dbUrl;
         connect();
-        init(easyTable, mediumTable);
+        init(easyTable, mediumTable, hardTable);
         close();
     }
 
@@ -54,12 +54,14 @@ public class DBScore {
      * @param easyTable    The table foe easy scores.
      * @param mediumTable  The table for medium scores.
      */
-    public void init(String easyTable, String mediumTable) {
+    public void init(String easyTable, String mediumTable, String hardTable) {
         try {
             Statement s = db.createStatement();
             String newTable = "CREATE TABLE IF NOT EXISTS " + easyTable + " (id SERIAL, name STRING, time, STRING);";
             s.execute(newTable);
             newTable = "CREATE TABLE IF NOT EXISTS " + mediumTable + " (id SERIAL, name STRING, time, STRING)";
+            s.execute(newTable);
+            newTable = "CREATE TABLE IF NOT EXISTS " + hardTable + " (id SERIAL, name STRING, time, STRING)";
             s.execute(newTable);
             s.close();
         } catch (SQLException e) {

@@ -40,6 +40,7 @@ public class SudokuUi extends Application {
     SudokuDisplay sudokuDisplay;
     ScoreDao easyDao;
     ScoreDao mediumDao;
+    ScoreDao hardDao;
     Timer time;
     
     /**
@@ -54,14 +55,16 @@ public class SudokuUi extends Application {
         String sudokuDB = properties.getProperty("sudokuDB");
         String easyTable = properties.getProperty("easyTable");
         String mediumTable = properties.getProperty("mediumTable");
+        String hardTable = properties.getProperty("hardTable");
 
         String ud = System.getProperty("user.dir");
         String fs = System.getProperty("file.separator");
         String dbUrl = "jdbc:sqlite:" + ud + fs + sudokuDB;
 
-        DBScore db = new DBScore(dbUrl, easyTable, mediumTable);
+        DBScore db = new DBScore(dbUrl, easyTable, mediumTable, hardTable);
         easyDao = new ScoreDao(db, easyTable);
         mediumDao = new ScoreDao(db, mediumTable);
+        hardDao = new ScoreDao(db, hardTable);
         
     }
     
@@ -114,6 +117,7 @@ public class SudokuUi extends Application {
         Label level = new Label("Choose difficulty:");
         Button easyPlay = new Button("Easy");
         Button mediumPlay = new Button("Medium");
+        Button hardPlay = new Button("Hard");
         Button back = new Button("Return to menu");
         
         level.setFont(Font.font("Lucida Sans Unicode", FontWeight.MEDIUM, 40));
@@ -123,9 +127,12 @@ public class SudokuUi extends Application {
         mediumPlay.setFont(Font.font("Lucida Sans Unicode", 25));
         mediumPlay.setMaxWidth(300);
         mediumPlay.setStyle("-fx-background-color: #9198e5;" + "-fx-border-color: black");
+        hardPlay.setFont(Font.font("Lucida Sans Unicode", 25));
+        hardPlay.setMaxWidth(300);
+        hardPlay.setStyle("-fx-background-color: #9198e5;" + "-fx-border-color: black");
         
         playMenu.setAlignment(Pos.CENTER);
-        playMenu.getChildren().addAll(level, easyPlay, mediumPlay);
+        playMenu.getChildren().addAll(level, easyPlay, mediumPlay, hardPlay);
         
         HBox backButton = new HBox(10);
         backButton.setPadding(new Insets(10));
@@ -245,20 +252,25 @@ public class SudokuUi extends Application {
         HBox highScoresLists = new HBox(10);
         highScoresLists.setPadding(new Insets(10));
         
-        VBox mediumScoresList = new VBox(10);
-        mediumScoresList.setPadding(new Insets(10));
         VBox easyScoresList = new VBox(10);
         easyScoresList.setPadding(new Insets(10));
+        VBox mediumScoresList = new VBox(10);
+        mediumScoresList.setPadding(new Insets(10));
+        VBox hardScoresList = new VBox(10);
+        hardScoresList.setPadding(new Insets(10));
         
-        Label mediumTitle = new Label("Medium Difficulty: ");
-        mediumTitle.setFont(Font.font("Lucida Sans Unicode", FontWeight.BOLD, 25));
         Label easyTitle = new Label("Easy Difficulty: ");
-        easyTitle.setFont(Font.font("Lucida Sans Unicode", FontWeight.BOLD, 25));
+        easyTitle.setFont(Font.font("Lucida Sans Unicode", FontWeight.BOLD, 20));
+        Label mediumTitle = new Label("Medium Difficulty: ");
+        mediumTitle.setFont(Font.font("Lucida Sans Unicode", FontWeight.BOLD, 20));
+        Label hardTitle = new Label("Hard Difficulty: ");
+        hardTitle.setFont(Font.font("Lucida Sans Unicode", FontWeight.BOLD, 20));
         
-        mediumScoresList.getChildren().add(mediumTitle);
         easyScoresList.getChildren().add(easyTitle);
+        mediumScoresList.getChildren().add(mediumTitle);
+        hardScoresList.getChildren().add(hardTitle);
         
-        highScoresLists.getChildren().addAll(mediumScoresList, easyScoresList);
+        highScoresLists.getChildren().addAll(easyScoresList, mediumScoresList, hardScoresList);
         highScoresLists.setAlignment(Pos.CENTER);
         
         highScores.getChildren().add(highScoresLists);
@@ -323,6 +335,14 @@ public class SudokuUi extends Application {
             stage.setScene(sudokuScene);
             time.start();
         });
+        
+        hardPlay.setOnAction((event) -> {
+            sudoku.setDifficulty(45);
+            sudoku.newSudoku();
+            sudokuDisplay.showSudoku(sudoku, sudokuBoard);
+            stage.setScene(sudokuScene);
+            time.start();
+        });
        
         newSudoku.setOnAction((event) -> {
             time.reset();
@@ -360,15 +380,21 @@ public class SudokuUi extends Application {
         save.setOnAction((ActionEvent event) -> {
             if (nameArea.getText().length() < 16 && nameArea.getText().length() > 0) {
                 
-                if (sudoku.getDifficulty() == 35) {
+                if (sudoku.getDifficulty() == 25) {
+                    try {
+                        easyDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
+                    } catch (SQLException e) {
+                        System.out.println("Exception in saving: " + e);
+                    }
+                } else if (sudoku.getDifficulty() == 35) {
                     try {
                         mediumDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Medium");
                     } catch (SQLException e) {
                         System.out.println("Exception in saving: " + e);
                     }
-                } else if (sudoku.getDifficulty() == 25) {
+                } else {
                     try {
-                        easyDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
+                        hardDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Hard");
                     } catch (SQLException e) {
                         System.out.println("Exception in saving: " + e);
                     }
@@ -385,21 +411,47 @@ public class SudokuUi extends Application {
                 
         
         scores.setOnAction((event) -> {
-            mediumScoresList.getChildren().clear();
             easyScoresList.getChildren().clear();
-            mediumScoresList.getChildren().add(mediumTitle);
+            mediumScoresList.getChildren().clear();
+            hardScoresList.getChildren().clear();
             easyScoresList.getChildren().add(easyTitle);
+            mediumScoresList.getChildren().add(mediumTitle);
+            hardScoresList.getChildren().add(hardTitle);
+            
+            List<SudokuScore> scoresEasy = new ArrayList<>();
+            try {
+                scoresEasy = easyDao.list("Easy");
+            } catch (SQLException e) {
+                System.out.println("Exception in listing: " + e);
+            }
+            
             List<SudokuScore> scoresMedium = new ArrayList<>();
             try {
                 scoresMedium = mediumDao.list("Medium");
             } catch (SQLException e) {
                 System.out.println("Exception in listing: " + e);
             }
-            List<SudokuScore> scoresEasy = new ArrayList<>();
+            
+            List<SudokuScore> scoresHard = new ArrayList<>();
             try {
-                scoresEasy = easyDao.list("Easy");
+                scoresMedium = hardDao.list("Hard");
             } catch (SQLException e) {
                 System.out.println("Exception in listing: " + e);
+            }
+            
+            if (scoresEasy.isEmpty()) {
+                Label noScores = new Label("No scores!");
+                noScores.setFont(Font.font("Lucida Sans Unicode", 20));
+                easyScoresList.getChildren().add(noScores);
+            } else {
+                for (int i = 0; i < scoresEasy.size(); i++) {
+                    if ( i >= 10) {
+                        break;
+                    }
+                    Label newRecord = new Label((i+1) + ". " + scoresEasy.get(i).toString());
+                    newRecord.setFont(Font.font("Lucida Sans Unicode", 20));
+                    easyScoresList.getChildren().add(newRecord);
+                }
             }
             
             if (scoresMedium.isEmpty()) {
@@ -417,18 +469,18 @@ public class SudokuUi extends Application {
                 }
             }
             
-            if (scoresEasy.isEmpty()) {
+            if (scoresHard.isEmpty()) {
                 Label noScores = new Label("No scores!");
                 noScores.setFont(Font.font("Lucida Sans Unicode", 20));
-                easyScoresList.getChildren().add(noScores);
+                hardScoresList.getChildren().add(noScores);
             } else {
-                for (int i = 0; i < scoresEasy.size(); i++) {
+                for (int i = 0; i < scoresHard.size(); i++) {
                     if ( i >= 10) {
                         break;
                     }
-                    Label newRecord = new Label((i+1) + ". " + scoresEasy.get(i).toString());
+                    Label newRecord = new Label((i+1) + ". " + scoresHard.get(i).toString());
                     newRecord.setFont(Font.font("Lucida Sans Unicode", 20));
-                    easyScoresList.getChildren().add(newRecord);
+                    hardScoresList.getChildren().add(newRecord);
                 }
             }
             
