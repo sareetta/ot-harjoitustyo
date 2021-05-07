@@ -24,4 +24,5 @@ Päivä | Aika | Mitä tein?
 4.5 | 5 | Ongelmia jarin ja tietokannan kanssa
 5.5 | 5 | Tietokanta korjattu ja testejä sille
 7.5 | 4 | Testausdokumentti, javadoc dokumentaatioiden ja kuvien lisääminen
-Yht. | 99 |
+7.5 | 2 | Testailua ja uuden vaikeustason lisääminen
+Yht. | 101 |
