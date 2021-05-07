@@ -23,4 +23,5 @@ Päivä | Aika | Mitä tein?
 2.5 | 6 | JavaDoc, arkkitehtuurikuvaus ja käyttöohje
 4.5 | 5 | Ongelmia jarin ja tietokannan kanssa
 5.5 | 5 | Tietokanta korjattu ja testejä sille
-Yht. | 95 |
+7.5 | 4 | Testausdokumentti, javadoc dokumentaatioiden ja kuvien lisääminen
+Yht. | 99 |
