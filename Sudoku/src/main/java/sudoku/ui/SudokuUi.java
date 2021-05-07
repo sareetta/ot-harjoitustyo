@@ -41,6 +41,9 @@ public class SudokuUi extends Application {
     ScoreDao easyDao;
     ScoreDao mediumDao;
     ScoreDao hardDao;
+    List<SudokuScore> scoresEasy;
+    List<SudokuScore> scoresMedium;
+    List<SudokuScore> scoresHard;
     Timer time;
     
     /**
@@ -78,6 +81,10 @@ public class SudokuUi extends Application {
         sudoku = new SudokuGame();
         sudokuDisplay = new SudokuDisplay();
         time = new Timer();
+        scoresEasy = new ArrayList<>();
+        scoresMedium = new ArrayList<>();
+        scoresHard = new ArrayList<>();
+        
         
         BorderPane menuLayout = new BorderPane();
         menuLayout.setStyle("-fx-background-color: linear-gradient(to top, #e66465, #9198e5);");
@@ -207,8 +214,8 @@ public class SudokuUi extends Application {
         HBox options = new HBox(10);
         options.setPadding(new Insets(10));
         
-        Label exitGame = new Label("The Sudoku will not be saved.\n"
-                + "Are you sure you want to exit?");
+        Label exitGame = new Label("Are you sure you want to exit?\n"
+                + "The Sudoku will not be saved.");
         Button yes = new Button("Yes");
         Button no = new Button("No");
         
@@ -250,7 +257,7 @@ public class SudokuUi extends Application {
         highScores.getChildren().add(scoresTitle);
         
         HBox highScoresLists = new HBox(10);
-        highScoresLists.setPadding(new Insets(10));
+        highScoresLists.setPadding(new Insets(5));
         
         VBox easyScoresList = new VBox(10);
         easyScoresList.setPadding(new Insets(10));
@@ -378,33 +385,34 @@ public class SudokuUi extends Application {
         });
         
         save.setOnAction((ActionEvent event) -> {
-            if (nameArea.getText().length() < 16 && nameArea.getText().length() > 0) {
+            if (nameArea.getText().length() < 11 && nameArea.getText().length() > 0) {
                 
-                if (sudoku.getDifficulty() == 25) {
-                    try {
-                        easyDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
-                    } catch (SQLException e) {
-                        System.out.println("Exception in saving: " + e);
-                    }
-                } else if (sudoku.getDifficulty() == 35) {
-                    try {
-                        mediumDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Medium");
-                    } catch (SQLException e) {
-                        System.out.println("Exception in saving: " + e);
-                    }
-                } else {
-                    try {
-                        hardDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Hard");
-                    } catch (SQLException e) {
-                        System.out.println("Exception in saving: " + e);
-                    }
+                switch (sudoku.getDifficulty()) {
+                    case 25:
+                        try {
+                            easyDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Easy");
+                        } catch (SQLException e) {
+                            System.out.println("Exception in saving: " + e);
+                        }   break;
+                    case 35:
+                        try {
+                            mediumDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Medium");
+                        } catch (SQLException e) {
+                            System.out.println("Exception in saving: " + e);
+                        }   break;
+                    default:
+                        try {
+                            hardDao.save(new SudokuScore(0, nameArea.getText(), time.Time()), "Hard");
+                        } catch (SQLException e) {
+                            System.out.println("Exception in saving: " + e);
+                        }   break;
                 }
                 
                 nameArea.setText("");
                 name.setText("Add your username above.");
                 stage.setScene(menuScene); 
             } else {
-                nameArea.setText("Your name needs to be 1 - 15 characters!");
+                nameArea.setText("Your name needs to be 1 - 10 characters!");
             }
             
             });
@@ -414,27 +422,25 @@ public class SudokuUi extends Application {
             easyScoresList.getChildren().clear();
             mediumScoresList.getChildren().clear();
             hardScoresList.getChildren().clear();
+
             easyScoresList.getChildren().add(easyTitle);
             mediumScoresList.getChildren().add(mediumTitle);
-            hardScoresList.getChildren().add(hardTitle);
+            hardScoresList.getChildren().add(hardTitle); 
             
-            List<SudokuScore> scoresEasy = new ArrayList<>();
             try {
                 scoresEasy = easyDao.list("Easy");
             } catch (SQLException e) {
                 System.out.println("Exception in listing: " + e);
             }
             
-            List<SudokuScore> scoresMedium = new ArrayList<>();
             try {
                 scoresMedium = mediumDao.list("Medium");
             } catch (SQLException e) {
                 System.out.println("Exception in listing: " + e);
             }
             
-            List<SudokuScore> scoresHard = new ArrayList<>();
             try {
-                scoresMedium = hardDao.list("Hard");
+                scoresHard = hardDao.list("Hard");
             } catch (SQLException e) {
                 System.out.println("Exception in listing: " + e);
             }
@@ -499,6 +505,9 @@ public class SudokuUi extends Application {
         
         back3.setOnAction((event) -> {
             stage.setScene(menuScene);
+            scoresEasy.clear();
+            scoresMedium.clear();
+            scoresHard.clear();
         }); 
         
         exit2.setOnAction((event) -> {
