@@ -40,12 +40,12 @@ Sovellusta on testattu siten, että tietokanta on ollut olemassa ja niin, että 
 ## Toiminnallisuus
 
 Sovelluksen kaikki toiminnallisuudet [vaatimusmäärittelystä](https://github.com/sareetta/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittelu.md) on pyritty testaamaan.
-On huomioitu, että käyttäjän nimimerkki on sallituissa rajoissa ja ettei sudokun tarkistuksessa tule virhetilannetta, jos käyttäjä on syöttänyt sudokuun epäkelpoja arvoja.
+On huomioitu, että käyttäjän käyttäjänimi on sallituissa rajoissa ja ettei sudokun tarkistuksessa tule virhetilannetta, jos käyttäjä on syöttänyt sudokuun epäkelpoja arvoja.
 
 ## Sovelluksen laatuongelmat
-Virheilmoitukset on pyritty kirjoittamaan laajasti, mutta on mahdollista, että joissain tilanteissa svellus ei anna järkevää ilmoitusta.
+Virheilmoitukset on pyritty kirjoittamaan laajasti, mutta on mahdollista, että joissain tilanteissa sovellus ei anna järkevää ilmoitusta.
 
-Sudokun täyttäminen toteutetaan tällä hetkellä hiiren avulla. 
-Jotkut mielummin käyttäisivät nuolinäppäimiä täyttämiseen, mutta itse koen miellyttävämmäksi käyttää hiirtä.
-Käyttöliittymän koodi on lähes kokonaan start-metodin sisällä, joten tästä voisi tehdä siistimmän tulevaisuudessa esim. jakamalla eri näkymät omiin metodeihinsa. 
+Sudokun täyttäminen toteutetaan tällä hetkellä hiiren ja näppäimistön avulla. 
+Jotkut mielummin käyttäisivät pelkkää hiirtä tai nuolinäppäimiä sudokun täyttämiseen, mutta itse pidän nykyisestä toteutuksesta.
+Käyttöliittymään on jäänyt hieman sovelluslogiikkaa, mutta sen määrää on pyritty minimoimaan.
 
