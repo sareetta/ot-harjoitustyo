@@ -4,7 +4,7 @@
 Ohjelman rakenne noudattaa kolmikerroksista arkkitehtuuria.
 Koodin pakkausrakenne on seuraava:
 
-![Sudoku_package_diagram](https://user-images.githubusercontent.com/81009944/115229863-3bd67a00-a11c-11eb-9668-585ea7b22d1e.png)
+![Sudoku_pakkauskaavio](https://user-images.githubusercontent.com/81009944/118408016-438e2d80-b68c-11eb-9e93-1beabcc14dbf.png)
 
 Pakkaus sudoku.ui sisältää JavaFX:llä toteutetun käyttöliittymän, sudoku.domain sovelluslogiikan ja sudoku.dao tietojen pysyväistallennuksesta vastaavan koodin.
 
@@ -32,7 +32,7 @@ Sovelluslogiikka koostuu sudokuruudukkoa sudokulautaa esittävästä luokasta Su
 SudokuScorella on oliomuuttujina id, pelaajan nimi ja suoritusaika tietokantaan tallentamista varten. Sudoku ja pelitulokset eivät tiedä toisistaan mitään. 
 Luokkakaavio paketin sudoku.domain sisällöstä:
 
-![Class_diagram_sudoku domain](https://user-images.githubusercontent.com/81009944/116816516-e6ae5580-ab6a-11eb-83d9-536652e38c86.png)
+![Sudoku_domain_luokkakaavio](https://user-images.githubusercontent.com/81009944/118407999-340ee480-b68c-11eb-830a-6e1ec319b81c.png)
 
 Toiminnallisista kokonaisuuksista vastaa luokka SudokuGame. Luokka tarjoaa kaikille käyttöliittymän toiminnoille oman metodin. Näitä ovat esim.
 
@@ -82,7 +82,7 @@ Sudokun generoimisen ja tarkistamisen lisäksi tärkeimmät toiminnot ovat varma
 
 Sovelluslogiikka
 
-Sudoku-luokka on luokkana aika iso, ja siinä on yksi metodi, joka on yli 20 riviä. Metodi generateSudoku on suositeltua pidempi. Metodi käyttää rekursiota Sudokun täyttämiseen enkä tiedä miten sitä voisi lyhentää. Sudoku-luokka jäi pitkäksi, koska kaikki siinä olevat metodit liittyvät sudokuun ja sen ylläpitoon. Sudokun generoimiseen ja tarkistukseen tarvitsee useita metodeja, joten pituutta tuli siitä.
+SudokuGame-luokka on luokkana aika iso, ja siinä on yksi metodi, joka on yli 20 riviä. Metodi generateSudoku on suositeltua pidempi. Metodi käyttää rekursiota Sudokun täyttämiseen enkä tiedä miten sitä voisi lyhentää. SudokuGame-luokka jäi pitkäksi, koska kaikki siinä olevat metodit liittyvät sudokuun ja sen ylläpitoon. Sudokun generoimiseen ja tarkistukseen tarvitsee useita metodeja, joten pituutta tuli siitä.
 
 
 
