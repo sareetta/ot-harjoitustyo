@@ -22,9 +22,9 @@ Testausta varten käytetään testitietokantaa test.db, joka testien jälkeen po
 Testitietokannan avulla testataan varsinaisen tietokannan toimintaa testaamalla tietokantaluokkien metodeja tällä testitietokannalla.
 
 ## Testikattavuus
-Käyttöliittymää lukuunottamatta sovelluksen testauksen rivikattavuus on 94% ja haarautumakattavuus 98%.
+Käyttöliittymää lukuunottamatta sovelluksen testauksen rivikattavuus on 95% ja haarautumakattavuus 98%.
 
-![Jacoco-report Sudoku](https://user-images.githubusercontent.com/81009944/117439964-2941aa80-af3c-11eb-89ba-862073974824.png)
+![Sudoku_jacoco_raportti](https://user-images.githubusercontent.com/81009944/118409014-12642c00-b691-11eb-96d0-ad418d20d7c4.png)
 
 Testaamatta on muutamia settereitä ja gettereitä sekä DAO-puolella testaamattomat tilanteet ovat sellaiset, joissa käsitellään SQLException.
 
