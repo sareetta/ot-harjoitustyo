@@ -84,5 +84,10 @@ Sovelluslogiikka
 
 SudokuGame-luokka on luokkana aika iso, ja siinä on yksi metodi, joka on yli 20 riviä. Metodi generateSudoku on suositeltua pidempi. Metodi käyttää rekursiota Sudokun täyttämiseen enkä tiedä miten sitä voisi lyhentää. SudokuGame-luokka jäi pitkäksi, koska kaikki siinä olevat metodit liittyvät sudokuun ja sen ylläpitoon. Sudokun generoimiseen ja tarkistukseen tarvitsee useita metodeja, joten pituutta tuli siitä.
 
+Käyttöliittymä
+
+Käyttöliittymää on muokattu selvemmäksi, mutta se on edelleen hyvin pitkä ja esimerkiksi eri näkymien metodit voisi eriyttää omiin luokkiinsa selkeyttämään sitä.
+Käyttöliittymään on jäänyt hieman sovelluslogiikkaa tarkistusnapin toimintaan.
+
 
 
