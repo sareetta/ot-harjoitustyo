@@ -17,6 +17,9 @@
 [Viikko 5](https://github.com/sareetta/ot-harjoitustyo/releases)
 
 [Viikko 6](https://github.com/sareetta/ot-harjoitustyo/releases)
+
+[Loppupalautus](https://github.com/sareetta/ot-harjoitustyo/releases)
+
 ## Komentorivitoiminnot
 
 ### Ohjelman suoritus
