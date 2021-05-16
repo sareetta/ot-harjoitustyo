@@ -25,4 +25,5 @@ Päivä | Aika | Mitä tein?
 5.5 | 5 | Tietokanta korjattu ja testejä sille
 7.5 | 4 | Testausdokumentti, javadoc dokumentaatioiden ja kuvien lisääminen
 7.5 | 2 | Testailua ja uuden vaikeustason lisääminen
-Yht. | 101 |
+16.5 | 5 | UI:n muokkausta, hienosäätöjä ja dokumentaatioiden päivitystä
+Yht. | 106 |
