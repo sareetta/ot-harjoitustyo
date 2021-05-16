@@ -51,7 +51,7 @@ public class Timer {
     }
 
     /**
-     * Method for increase the time.
+     * Method for increasing the time.
      */
     private void increaseTime() {
         if (seconds < 59) {
@@ -95,7 +95,7 @@ public class Timer {
     }
     
     /**
-     * Method to continue the timer.
+     * Method to replay the timer.
      */
     public void replay() {
         timeline.play();
