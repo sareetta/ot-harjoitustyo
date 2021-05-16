@@ -7,6 +7,9 @@ package sudoku.dao;
 
 import java.sql.*;
 import java.util.*;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import sudoku.domain.SudokuScore;
 
 /**
@@ -73,6 +76,23 @@ public class ScoreDao implements SQLDao {
         db.close();
         
         return scores;
+    }
+    
+    public void listScores(VBox scoreList) {
+        if (scores.isEmpty()) {
+                Label noScores = new Label("No scores!");
+                noScores.setFont(Font.font("Lucida Sans Unicode", 20));
+                scoreList.getChildren().add(noScores);
+        } else {
+            for (int i = 0; i < scores.size(); i++) {
+                if ( i >= 10) {
+                    break;
+                }
+            Label newRecord = new Label((i+1) + ". " + scores.get(i).toString());
+            newRecord.setFont(Font.font("Lucida Sans Unicode", 20));
+            scoreList.getChildren().add(newRecord);
+            }
+        }
     }
     
 }

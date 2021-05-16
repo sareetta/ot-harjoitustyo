@@ -172,10 +172,12 @@ public class SudokuGame {
     /**
      * Method checks if the solution for Sudoku is correct or not.
      * 
+     * @param sudokuDisplay The Sudoku board which contains user input.
      * @return Return true if correct, otherwise false
      */
     public boolean checkSudoku() {
         boolean check = true;
+       
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
                 if (solution[row][column] != sudoku[row][column]) {
